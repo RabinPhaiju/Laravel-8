@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users;
+use App\Http\Controllers\UserAuth;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,13 @@ Route::get('/', function () {
     // return redirect('contact');
 });
 
+Route::get('/logout', function () {
+    if(session()->has('username')){
+        session()->pull('username');
+    }
+    return redirect('login');
+});
+
 Route::get('/about/{name}', function ($name) {
     return view('about',['name'=>$name]);
 });
@@ -34,7 +42,23 @@ Route::view("contact",'contact'); // cannot pass url to view
 
 Route::post("userform",[Users::class,'getData']); 
 
-Route::view("login",'userform')->middleware('protectedLoginPage');
+Route::view("loginForm",'userForm')->middleware('protectedLoginPage');
+
+Route::post("loginAuth",[UserAuth::class,'userLogin'])->middleware('protectedLoginPage');
+
+Route::get('/login', function () {
+    if(session()->has('username')){
+        return redirect('profile');
+    }
+    return view('login');
+});
+
+Route::get('/profile', function () {
+    if(session()->has('username')){
+        return view('profile');
+    }
+    return redirect('login');
+});
 
 Route::view("noaccess",'noaccess'); 
 
