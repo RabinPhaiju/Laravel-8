@@ -29,7 +29,24 @@ Route::view("contact",'contact'); // cannot pass url to view
 
 // Route::get("path",'controller file');
 // Route::get("user",'User@index');
-Route::get("user/{user}",[Users::class,'index_func']);
+// Route::get("user/{user}",[Users::class,'index_func']);
+
 
 Route::post("userform",[Users::class,'getData']); 
-Route::view("login",'userform'); 
+
+Route::view("login",'userform')->middleware('protectedLoginPage');
+
+Route::view("noaccess",'noaccess'); 
+
+// protected page
+Route::group(['middleware'=>['protectedPage']],function(){
+
+    // Route::get("user/{user}",[Users::class,'index_func']);
+
+    // Route::get("user/{user}",[Users::class,'fetchUserData']); // fetch directly
+
+    Route::get("user/{user}",[Users::class,'fetchDBData']); // fetch using model
+    
+});
+
+Route::get("collection",[Users::class,'fetchHttp']); // fetch from HTTP

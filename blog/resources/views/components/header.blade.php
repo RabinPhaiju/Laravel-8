@@ -3,16 +3,17 @@
     <div class="header">
   <a href="#default" class="logo">{{$title}}</a>
   <div class="header-right">
-    <a class="active" href="#home">Home</a>
-    <a href="#contact">Contact</a>
-    <a href="#about">About</a>
-  </div>
-</div>
+    <a class="active" href="/">Home</a>
+    <a href="/about/rabin">about page</a>
+    <a href="/contact">contacts</a>
+    <a href="/collection">User List</a>
+    <a href="/user/new name?age=20">User</a>
+    <a href="/user/new name?age=10">No user</a>
+    <a href="/login">Login</a>
+    <a href="/noaccess">No Access</a>
 
-<div style="padding-left:20px">
-  <h1>Responsive Header</h1>
-  <p>Resize the browser window to see the effect.</p>
-  <p>Some content..</p>
+
+  </div>
 </div>
 </div>
 

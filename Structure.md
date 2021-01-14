@@ -14,3 +14,15 @@
 
 - in dir "resources/views/" create new file_name
 - in dir "resources/routes/web.php" return view('file_name');
+
+#
+
+# Model
+
+Map Database table with class Name
+Define database structure
+Write Business logic
+
+- DB table = Model Name
+- users = user
+- employees = employee

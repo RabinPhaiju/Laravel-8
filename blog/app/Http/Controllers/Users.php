@@ -3,10 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\HTTP;
+use App\Models\User;
 
 class Users extends Controller
 {
     //
+    function fetchUserData(){
+        echo 'from db user control';
+
+        // direct DB connection.
+        return DB::select("select * from users");
+    }
+
+    function fetchDBData(){
+        // model connection DB
+        return User::all();
+    }
+
+    function fetchHttp(){
+        echo "API Data will be here";
+        $collection= Http::get("https://reqres.in/api/users?page=1");
+        return view("collection",['collection'=>$collection['data']]);
+    }
+
     public function index_func($user){
         // return ['name'=>"rabin",'age'=>34]; // api return
         echo " Hello from controller ".$user;

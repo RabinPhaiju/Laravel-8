@@ -1,4 +1,4 @@
-<x-header data='form'/>
+<x-header data='Login Page'/>
 
 <h1>User Form</h1>
 

@@ -29,3 +29,11 @@
 # create new component
 
 - php artisan make:component Header
+
+# create new middleware
+
+- php artisan make:middleware ageCheck
+
+# create new model
+
+- php artisan make:model User
