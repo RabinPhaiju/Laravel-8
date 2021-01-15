@@ -50,12 +50,13 @@ Route::post("loginAuth",[UserAuth::class,'userLogin'])->middleware('protectedLog
 
 Route::get('/login', function () {
     if(session()->has('username')){
-        return redirect('profile');
+        return redirect('profile/en');
     }
     return view('login');
 });
 
-Route::get('/profile', function () {
+Route::get('/profile/{lang}', function ($lang) {
+    App::setlocale($lang);
     if(session()->has('username')){
         return view('profile');
     }

@@ -12,6 +12,6 @@ class UserAuth extends Controller
             $req->session()->put('username',$data['username']);
             
             // return view("profile");
-            return redirect('profile');
+            return redirect('profile/en');
     }
 }
