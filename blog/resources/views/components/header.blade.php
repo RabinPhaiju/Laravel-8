@@ -6,11 +6,11 @@
     <a class="active" href="/">Home</a>
     <a href="/about/rabin">about page</a>
     <a href="/contact">contacts</a>
-    <a href="/collection">User List</a>
-    <a href="/user/new name?age=20">User</a>
+    <a href="/collection">User HTTP</a>
+    <a href="/user/new name?age=20">User DB</a>
     <a href="/user/new name?age=10">No user</a>
     <a href="/login">Login</a>
-    <a href="/profile/en">{{session()->has('username')?session('username'):"Profile"}}</a>
+    <a href="/profile/en" id="profile">{{session()->has('username')?session('username'):"Profile"}}</a>
     <a href="/subscribe">Subscribe</a>
     <a href="/loginForm">Login Form</a>
     <a href="/noaccess">No Access</a>
@@ -23,6 +23,9 @@
 
 <style>
 * {box-sizing: border-box;}
+#profile{
+  background-color: rgb(240, 158, 196);
+}
 
 body { 
   margin: 0;

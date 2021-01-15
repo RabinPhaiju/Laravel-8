@@ -34,13 +34,11 @@ Route::get('/about/{name}', function ($name) {
     return view('about',['name'=>$name]);
 });
 
-
 Route::view("contact",'contact'); // cannot pass url to view
 
 // Route::get("path",'controller file');
 // Route::get("user",'User@index');
 // Route::get("user/{user}",[Users::class,'index_func']);
-
 
 Route::post("userform",[Users::class,'getData']); 
 
@@ -75,6 +73,8 @@ Route::group(['middleware'=>['protectedPage']],function(){
     Route::get("user/{user}",[Users::class,'fetchDBData']); // fetch using model
     
 });
+
+Route::post("profile/addUser",[Users::class,'addDBData']);
 
 Route::get("collection",[Users::class,'fetchHttp']); // fetch from HTTP
 

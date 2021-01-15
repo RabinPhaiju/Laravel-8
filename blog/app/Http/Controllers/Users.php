@@ -19,7 +19,23 @@ class Users extends Controller
 
     function fetchDBData(){
         // model connection DB
-        return User::all();
+        // return User::all();
+
+        // $data= User::all();
+        $data= User::paginate(5);
+
+        return view('userList',['userData'=>$data]);
+    }
+
+    function addDBData(Request $req){
+        $user = new User;
+        $user->firstname=$req->firstname;
+        $user->email=$req->email;
+        $user->location=$req->location;
+        $user->contact=$req->contact;
+
+        $user->save();
+        return redirect('user/rabin?age=20');
     }
 
     function fetchHttp(){
