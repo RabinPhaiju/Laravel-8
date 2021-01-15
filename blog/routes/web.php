@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users;
 use App\Http\Controllers\UserAuth;
+use App\Http\Controllers\Subscriber;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,3 +75,9 @@ Route::group(['middleware'=>['protectedPage']],function(){
 });
 
 Route::get("collection",[Users::class,'fetchHttp']); // fetch from HTTP
+
+//Flash Session
+Route::get('/subscribe', function () {
+    return view('subscribe');
+});
+Route::post("subscribe",[Subscriber::class,'Subscribe']);

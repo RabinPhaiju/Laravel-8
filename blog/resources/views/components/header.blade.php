@@ -11,6 +11,7 @@
     <a href="/user/new name?age=10">No user</a>
     <a href="/login">Login</a>
     <a href="/profile">{{session()->has('username')?session('username'):"Profile"}}</a>
+    <a href="/subscribe">Subscribe</a>
     <a href="/loginForm">Login Form</a>
     <a href="/noaccess">No Access</a>
 

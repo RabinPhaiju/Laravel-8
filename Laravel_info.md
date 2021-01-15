@@ -37,3 +37,7 @@
 # create new model
 
 - php artisan make:model User
+
+# Flash Session
+
+- Delete after refresh. Used in sending mail and get confrimation.
