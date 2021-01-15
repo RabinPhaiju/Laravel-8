@@ -14,6 +14,7 @@
     <a href="/subscribe">Subscribe</a>
     <a href="/loginForm">Login Form</a>
     <a href="/noaccess">No Access</a>
+    <a href="/uploadFile">File Upload</a>
 
 
   </div>

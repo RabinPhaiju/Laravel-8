@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users;
 use App\Http\Controllers\UserAuth;
 use App\Http\Controllers\Subscriber;
+use App\Http\Controllers\FileUpload;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,3 +82,7 @@ Route::get('/subscribe', function () {
     return view('subscribe');
 });
 Route::post("subscribe",[Subscriber::class,'Subscribe']);
+
+// File Upload
+Route::view("uploadFile",'uploadFile');
+Route::post("uploadFile",[FileUpload::class,'fileUpload']);

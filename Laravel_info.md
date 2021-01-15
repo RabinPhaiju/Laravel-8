@@ -41,3 +41,7 @@
 # Flash Session
 
 - Delete after refresh. Used in sending mail and get confrimation.
+
+# Localization
+
+- Localization feature of Laravel supports different language to be used in application. You need to store all the strings of different language in a file and these files are stored at resources/views directory.
