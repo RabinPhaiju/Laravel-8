@@ -18,6 +18,12 @@ use App\Http\Controllers\Members;
 |
 */
 
+// One to one
+Route::get('oneToOne',[Members::class,'oneToOne']);
+
+// One to many
+Route::get('oneToMany',[Members::class,'oneToMany']);
+
 //Joins
 Route::get('/member/joins',[Members::class,'joins']);
 

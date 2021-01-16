@@ -23,7 +23,12 @@ class User extends Authenticatable
     }
 
     public function getLocationAttribute($value){
+        $len = strlen($value);
+        if(substr($value,$len-5,$len)=="Nepal"){
+            return $value;
+        }else{
         return ucFirst($value.", Nepal");
+        }
     }
 
     // Mutator

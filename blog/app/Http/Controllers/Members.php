@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Member;
 
 class Members extends Controller
 {
@@ -93,4 +94,14 @@ class Members extends Controller
         return DB::select("select * from users join members on users.id = members.id");
         return DB::select("select * from users join members on users.id = members.id where users.id<49");
     }
+
+        
+    function oneToOne(){
+        return Member::find(48)->getBloodtype1;
+    }
+
+    function oneToMany(){
+        return Member::find(48)->getBloodtype2;
+    }
+    
 }
