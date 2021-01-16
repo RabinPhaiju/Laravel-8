@@ -7,6 +7,7 @@
     <a href="/about/rabin">about page</a>
     <a href="/contact">contacts</a>
     <a href="/collection">User HTTP</a>
+    <a href="/memberList">Members</a>
     <a href="/user/new name?age=20">User DB</a>
     <a href="/user/new name?age=10">No user</a>
     <a href="/login">Login</a>

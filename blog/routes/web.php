@@ -5,6 +5,7 @@ use App\Http\Controllers\Users;
 use App\Http\Controllers\UserAuth;
 use App\Http\Controllers\Subscriber;
 use App\Http\Controllers\FileUpload;
+use App\Http\Controllers\Members;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,12 @@ use App\Http\Controllers\FileUpload;
 |
 */
 
+// Query Builder
+Route::get('memberList',[Members::class,'dbOperation']);
+Route::post('addMember',[Members::class,'dbInsert']);
+Route::get('member/delete/{id}',[Members::class,'dbDelete']);
+Route::get('member/update/{id}',[Members::class,'dbGetId']);
+Route::post('member/updateMember',[Members::class,'dbUpdate']);
 
 Route::get('/', function () {
     return view('index');
