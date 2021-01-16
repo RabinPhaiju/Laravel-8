@@ -80,4 +80,12 @@ class Members extends Controller
         return redirect('/login');
     }
     }
+
+    function operations(){
+        // return DB::table('members')->avg('id');
+        // return DB::table('members')->sum('id');
+        // return DB::table('members')->count('id');
+        // return DB::table('members')->max('id');
+        return DB::table('members')->min('id');
+    }
 }

@@ -18,6 +18,9 @@ use App\Http\Controllers\Members;
 |
 */
 
+// Aggregate methods
+Route::get('/member/operations',[Members::class,'operations']);
+
 // Query Builder
 Route::get('memberList',[Members::class,'dbOperation']);
 Route::post('addMember',[Members::class,'dbInsert']);
