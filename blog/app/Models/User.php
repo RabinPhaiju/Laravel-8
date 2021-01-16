@@ -13,6 +13,18 @@ class User extends Authenticatable
     public $table='users'; // defined for specify
     // public $timestamps=false;
 
+    public function getFirstnameAttribute($value){
+        return ucFirst($value);
+    }
+
+    public function getEmailAttribute($value){
+        return ucFirst($value);
+    }
+
+    public function getLocationAttribute($value){
+        return ucFirst($value.", Nepal");
+    }
+
     /**
      * The attributes that are mass assignable.
      *

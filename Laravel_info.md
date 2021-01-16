@@ -61,5 +61,9 @@
 # Seeding
 
 - Adding some dummy data to database throught laravel command line.
-- php artisan make:seeder MembersSeeder
-- php artisan db:seed --class=MembersSeeder
+- create :- php artisan make:seeder MembersSeeder
+- seed :- php artisan db:seed --class=MembersSeeder
+
+# Accessor
+
+- used to data before displaying the data.
