@@ -88,4 +88,9 @@ class Members extends Controller
         // return DB::table('members')->max('id');
         return DB::table('members')->min('id');
     }
+
+    function joins(){
+        return DB::select("select * from users join members on users.id = members.id");
+        return DB::select("select * from users join members on users.id = members.id where users.id<49");
+    }
 }

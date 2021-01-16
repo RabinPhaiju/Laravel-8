@@ -18,6 +18,9 @@ use App\Http\Controllers\Members;
 |
 */
 
+//Joins
+Route::get('/member/joins',[Members::class,'joins']);
+
 // Aggregate methods
 Route::get('/member/operations',[Members::class,'operations']);
 
