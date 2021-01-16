@@ -10,7 +10,11 @@ class Members extends Controller
     function dbOperation(){
 
             $data= DB::table('members')->get();
-            return view('memberListDB',['data'=>$data]);   
+            if(session()->has('username')){
+                return view('memberListDB',['data'=>$data]);   
+            }else{
+                return redirect('/login');
+            }
 
             // return DB::table('members')->where('id',51)->get();
             // return (array)DB::table('members')->find(51);
