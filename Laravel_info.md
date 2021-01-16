@@ -45,3 +45,15 @@
 # Localization
 
 - Localization feature of Laravel supports different language to be used in application. You need to store all the strings of different language in a file and these files are stored at resources/views directory.
+
+# Migration
+
+- Migrations are like version control for your database, allowing your team to define and share the application's database schema definition.
+
+- Create schema :- php artisan make:migration create_test_table
+- Migrate :- php artisan migrate
+- Undo :- php artisan migrate:rollback
+- Undo selected migrate :- php artisan migrate:rollback --step 3
+- Reset :- php artisan migrate:reset
+- Refresh :- php artisan migrate:refresh
+- Migrate a file: - php artisan migrate --path=/database/migrate/filename
