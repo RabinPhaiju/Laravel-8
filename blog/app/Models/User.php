@@ -13,6 +13,7 @@ class User extends Authenticatable
     public $table='users'; // defined for specify
     // public $timestamps=false;
 
+    // Accessor
     public function getFirstnameAttribute($value){
         return ucFirst($value);
     }
@@ -23,6 +24,15 @@ class User extends Authenticatable
 
     public function getLocationAttribute($value){
         return ucFirst($value.", Nepal");
+    }
+
+    // Mutator
+    public function setFirstnameAttribute($value){
+        $this->attributes['firstname'] = "Mr ".$value;
+    }
+
+    public function setLocationAttribute($value){
+        $this->attributes['location'] = $value.", Nepal";
     }
 
     /**

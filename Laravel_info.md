@@ -66,4 +66,8 @@
 
 # Accessor
 
-- used to data before displaying the data.
+- used in data before displaying the data.
+
+# Mutator
+
+- update data before saving in database.
