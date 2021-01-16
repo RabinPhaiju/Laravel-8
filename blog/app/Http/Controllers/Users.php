@@ -35,6 +35,21 @@ class Users extends Controller
         return redirect('user/rabin?age=20');
     }
 
+    function editUserDB($id){
+        $data = User::find($id);
+        // return $data;
+        return view('editUserDB',['data'=>$data]);
+    }
+
+    function updateUserDB(Request $req){
+        $data = User::find($req->id);
+        $data->firstname=$req->firstname;
+        $data->email=$req->email;
+        $data->location=$req->location;
+        $data->contact=$req->contact;
+        $data->save();
+        return redirect('user/rabin?age=20');
+    }
 
 
     function addDBData(Request $req){

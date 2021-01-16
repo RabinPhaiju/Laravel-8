@@ -78,6 +78,11 @@ Route::group(['middleware'=>['protectedPage']],function(){
 // Delete Route
 Route::get("user/delete/{id}",[Users::class,'deleteUserDB']);
 
+// Edit Route
+Route::get("user/editUserDB/{id}",[Users::class,'editUserDB']);
+Route::view("user/editUser","editUserDB");
+Route::post("user/updateUser",[Users::class,'updateUserDB']);
+
 
 Route::post("profile/addUser",[Users::class,'addDBData']);
 

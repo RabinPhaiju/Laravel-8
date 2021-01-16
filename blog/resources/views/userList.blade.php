@@ -24,7 +24,10 @@
             <td>{{$item['email']}}</td>
             <td>{{$item['location']}}</td>
             <td>{{$item['contact']}}</td>
-            <td ><a class="danger" onclick="return confirm('Are you sure you want to delete this item?');" href={{"delete/".$item['id']}}>Delete</a></td>
+            <td >
+              <a class="danger" onclick="return confirm('Are you sure you want to delete this item?');" href={{"delete/".$item['id']}}>Delete</a>
+              <a class="orange" href={{"editUserDB/".$item['id']}}>Edit</a>
+            </td>
         </tr>
         @endforeach
     </table>
@@ -42,7 +45,16 @@
     font-size: 18px;
     cursor: pointer;
   }
-  .danger{
+  .orange{
+    padding:4px 8px;
+    background: rgb(216, 160, 6);
+    border: none;
+    color: white;
+    border-radius: 2px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  .danger,.orange{
     text-decoration: none;
   }
     #collection {
