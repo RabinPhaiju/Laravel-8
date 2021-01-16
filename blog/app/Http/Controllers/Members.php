@@ -9,8 +9,8 @@ class Members extends Controller
 {
     function dbOperation(){
 
-            $data= DB::table('members')->get();
             if(session()->has('username')){
+                $data= DB::table('members')->get();
                 return view('memberListDB',['data'=>$data]);   
             }else{
                 return redirect('/login');
@@ -22,9 +22,12 @@ class Members extends Controller
         }
 
     function dbGetId($id){
+        if(session()->has('username')){
         $data= DB::table('members')->where('id',$id)->get();
-        // return $data[0]->id;
         return view('updateListDB',['data'=>$data]);   
+        }else{
+            return redirect('/login');
+        }
     }
 
     function dbInsert(Request $req){
@@ -43,22 +46,29 @@ class Members extends Controller
     }
 
     function dbUpdate(Request $req){
-        session()->flash('memberUpdate',$req->input('firstname'));
+        if(session()->has('username')){
+            session()->flash('memberUpdate',$req->input('firstname'));
 
-        $data = DB::table('members')
-        ->where('id',$req->input('id'))
-        ->update(
-            [
-                'firstname'=>$req->input('firstname'),
-                'email'=>$req->input('email'),
-                'location'=>$req->input('location'),
-                'contact'=>$req->input('contact')
-            ]
+            $data = DB::table('members')
+                ->where('id',$req->input('id'))
+                ->update(
+                [
+                    'firstname'=>$req->input('firstname'),
+                    'email'=>$req->input('email'),
+                    'location'=>$req->input('location'),
+                    'contact'=>$req->input('contact')
+                ]
             );
             return redirect('/memberList');
+        }else{
+            return redirect('/login');
+        }
+
+       
     }
 
     function dbDelete($id){
+        if(session()->has('username')){
         $user= DB::table('members')->where('id',$id)->get();
         session()->flash('memberDelete',$user[0]->firstname);
 
@@ -66,5 +76,8 @@ class Members extends Controller
         ->where('id',$id)
         ->delete();
         return redirect('/memberList');
+    }else{
+        return redirect('/login');
+    }
     }
 }
