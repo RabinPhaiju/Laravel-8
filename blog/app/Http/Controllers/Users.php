@@ -27,6 +27,16 @@ class Users extends Controller
         return view('userList',['userData'=>$data]);
     }
 
+    function deleteUserDB($id){
+        // How to delete more than one data at a time.
+        $data = User::find($id);
+        session()->flash('deleteUser',$data['username']);
+        $data->delete();
+        return redirect('user/rabin?age=20');
+    }
+
+
+
     function addDBData(Request $req){
         $user = new User;
         $user->firstname=$req->firstname;

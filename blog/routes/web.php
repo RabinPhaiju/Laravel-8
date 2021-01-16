@@ -74,6 +74,11 @@ Route::group(['middleware'=>['protectedPage']],function(){
     
 });
 
+
+// Delete Route
+Route::get("user/delete/{id}",[Users::class,'deleteUserDB']);
+
+
 Route::post("profile/addUser",[Users::class,'addDBData']);
 
 Route::get("collection",[Users::class,'fetchHttp']); // fetch from HTTP

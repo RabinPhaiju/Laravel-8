@@ -5,6 +5,9 @@
 <div>
     <h1>User list</h1>
     <h3><a href="/login">Add New User</a></h3>
+    @if (Session::has('deleteUser'))
+      <h3 style="color:red">User {{Session::get('deleteUser')}} deleted !</h3>
+    @endif
     <table id="collection">
         <tr>
             <th>ID</th>
@@ -16,12 +19,12 @@
         </tr>
         @foreach($userData as $item)
         <tr>
-            <td>{{$item['reg_id']}}</td>
+            <td>{{$item['id']}}</td>
             <td>{{$item['firstname']}}</td>
             <td>{{$item['email']}}</td>
             <td>{{$item['location']}}</td>
             <td>{{$item['contact']}}</td>
-            <td><button class="danger">Delete</button></td>
+            <td ><a class="danger" onclick="return confirm('Are you sure you want to delete this item?');" href={{"delete/".$item['id']}}>Delete</a></td>
         </tr>
         @endforeach
     </table>
@@ -31,12 +34,16 @@
 </div>
 <style>
   .danger{
+    padding:4px;
     background: rgb(253, 79, 79);
     border: none;
     color: white;
     border-radius: 2px;
     font-size: 18px;
     cursor: pointer;
+  }
+  .danger{
+    text-decoration: none;
   }
     #collection {
       font-family: Arial, Helvetica, sans-serif;
