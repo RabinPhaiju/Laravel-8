@@ -57,3 +57,9 @@
 - Reset :- php artisan migrate:reset
 - Refresh :- php artisan migrate:refresh
 - Migrate a file: - php artisan migrate --path=/database/migrate/filename
+
+# Seeding
+
+- Adding some dummy data to database throught laravel command line.
+- php artisan make:seeder MembersSeeder
+- php artisan db:seed --class=MembersSeeder
