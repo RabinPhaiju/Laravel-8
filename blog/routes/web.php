@@ -7,6 +7,7 @@ use App\Http\Controllers\Subscriber;
 use App\Http\Controllers\FileUpload;
 use App\Http\Controllers\Members;
 use App\Http\Controllers\Students;
+use App\Http\Controllers\Registers;
 use App\Mail\SampleMail;
 
 /*
@@ -19,6 +20,9 @@ use App\Mail\SampleMail;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Multiple Database Connection
+Route::get('multipleDatabaseConnection',[Registers::class,'multipleDatabaseConnection']);
+
 
 // Markdown Mail Template
 Route::get('/sampleMail', function () {
