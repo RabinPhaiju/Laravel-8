@@ -80,3 +80,9 @@
 # Fluent Strings
 
 - To provide more flexibility and readablity to the regular string operations in Laravel by chaining array of string manipulation methods.
+
+# Markdown Mail Template
+
+- https://laravel.com/docs/7.x/mail#markdown-mailables
+
+- php artisan make:mail SampleMail --markdown=emails.SampleMail

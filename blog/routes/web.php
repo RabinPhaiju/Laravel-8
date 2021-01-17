@@ -7,6 +7,7 @@ use App\Http\Controllers\Subscriber;
 use App\Http\Controllers\FileUpload;
 use App\Http\Controllers\Members;
 use App\Http\Controllers\Students;
+use App\Mail\SampleMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,11 @@ use App\Http\Controllers\Students;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Markdown Mail Template
+Route::get('/sampleMail', function () {
+    return new SampleMail();
+});
 
 // Route Model Binding
 Route::get('student/{key:firstname}',[Students::class,'index']); //firstname is a column name in database.

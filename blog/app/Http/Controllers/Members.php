@@ -6,9 +6,52 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Member;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SampleMail;
 
 class Members extends Controller
 {
+
+    function sentMemberMail(Request $req, $memberId)
+    {
+    $member = Member::findOrFail($memberId);
+
+        Mail::to($req->user())
+        ->cc('cc more users')
+        ->bcc('bcc even more user')
+        ->send(new SampleMail($member));
+    
+        // Looping Over Recipients
+            // foreach (['taylor@example.com', 'dries@example.com'] as $recipient) {
+            //     Mail::to($recipient)->send(new SampleMail($member));
+            // }
+
+
+        // Sending Mail Via A Specific Mailer
+            // Mail::mailer('postmark')
+            // ->to($req->user())
+            // ->send(new SampleMail($member));
+
+        // Queueing A Mail Message
+        //     Mail::to($req->user())
+        //     ->cc('cc more users')
+        //     ->bcc('bcc even more user')
+        //     ->queue(new SampleMail($member));
+
+        // Delayed Message Queueing
+            $when = now()->addMinutes(10);
+
+            Mail::to($req->user())
+            ->cc('cc more users')
+            ->bcc('bcc even more user')
+            ->later($when, new SampleMail($member));
+
+            // Pushing To Specific Queues
+            // Queueing By Default
+            // Previewing Mailables In The Browser
+            // Localizing Mailables
+        
+    }
 
     function FluentStrings(){
         $data = "this is a remark";
