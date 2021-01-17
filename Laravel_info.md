@@ -18,6 +18,10 @@
 
 - composer create-project --prefer-dist laravel/laravel [project_name]
 
+# Php artisan
+
+- php artisan :- to view the list of commands
+
 # Run project
 
 - php artisan serve
@@ -86,3 +90,8 @@
 - https://laravel.com/docs/7.x/mail#markdown-mailables
 
 - php artisan make:mail SampleMail --markdown=emails.SampleMail
+
+# Make custom command
+
+- Make Command:- php artisan make:command showDB
+- Run Command:- php artisan showDB
