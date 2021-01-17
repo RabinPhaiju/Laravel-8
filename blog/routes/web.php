@@ -18,6 +18,9 @@ use App\Http\Controllers\Members;
 |
 */
 
+// Fluent Strings
+Route::get('fluentStrings',[Members::class,'fluentStrings']);
+
 // One to one
 Route::get('oneToOne',[Members::class,'oneToOne']);
 

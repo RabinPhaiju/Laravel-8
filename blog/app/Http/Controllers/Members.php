@@ -5,9 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Member;
+use Illuminate\Support\Str;
 
 class Members extends Controller
 {
+
+    function FluentStrings(){
+        $data = "this is a remark";
+
+        return Str::of($data)
+            ->ucfirst($data)
+            // ->camel($data)
+            ->replaceFirst("This","These",$data);
+    }
+
     function dbOperation(){
 
             if(session()->has('username')){
