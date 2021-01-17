@@ -6,6 +6,7 @@ use App\Http\Controllers\UserAuth;
 use App\Http\Controllers\Subscriber;
 use App\Http\Controllers\FileUpload;
 use App\Http\Controllers\Members;
+use App\Http\Controllers\Students;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,9 @@ use App\Http\Controllers\Members;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Route Model Binding
+Route::get('student/{key:firstname}',[Students::class,'index']); //firstname is a column name in database.
 
 // Fluent Strings
 Route::get('fluentStrings',[Members::class,'fluentStrings']);
