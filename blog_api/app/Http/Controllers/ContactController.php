@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Contact;
+use Validator;
 
 use Illuminate\Http\Request;
 
@@ -24,17 +25,29 @@ class ContactController extends Controller
     function addData(Request $req){
         $contact = new Contact;
 
-        $contact->name=$req->name;
-        $contact->email=$req->email;
-        $contact->message = $req->message;
-        $contact->date = $req->date;
+        $rules = array(
+            "name"=>"required | min:5 | max:15",
+            "email"=>"required",
+            "message"=>"required",
+            "date"=>"required"
+        );
 
-        $result = $contact->save();
-
-        if($result){
-            return ['data'=>"Contact saved"];
+        $validator = Validator::make($req->all(),$rules);
+        if($validator->fails()){
+            return response()->json($validator->errors(),401);
         }else{
-            return ['data'=>'Error saving contact'];
+            $contact->name=$req->name;
+            $contact->email=$req->email;
+            $contact->message = $req->message;
+            $contact->date = $req->date;
+    
+            $result = $contact->save();
+    
+            if($result){
+                return ['data'=>"Contact saved"];
+            }else{
+                return ['data'=>'Error saving contact'];
+            }
         }
     }
 
