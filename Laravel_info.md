@@ -95,3 +95,10 @@
 
 - Make Command:- php artisan make:command showDB
 - Run Command:- php artisan showDB
+
+# Resources
+
+- Create some function in controller automatically
+- eg :- eg for curd operation, only one route can access all operations.
+- php artisan make:controller [controller_name] --resource
+- create model and controller at once :- php artisan make:model [model_name] --resource

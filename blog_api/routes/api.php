@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ContentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,6 @@ Route::post('contact/add',[ContactController::class,'addData']);
 Route::put('contact/update',[ContactController::class,'updateData']);
 Route::delete('contact/delete/{id}',[ContactController::class,'deleteData']);
 Route::get('contact/search/{name}',[ContactController::class,'searchData']);
+
+// Content Route
+Route::apiResource("content",ContentController::class);
