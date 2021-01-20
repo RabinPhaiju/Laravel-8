@@ -9,6 +9,12 @@ use Validator;
 
 class UserController extends Controller
 {
+
+    function fileUpload(Request $req){
+        $result = $req->file('file')->store('apiDocs');
+        return ['data'=>$result];
+    }
+
     function index(){
         return User::all();
     }

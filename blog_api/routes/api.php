@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::put('user/update',[UserController::class,'updateData']);
     Route::delete('user/delete/{id}',[UserController::class,'deleteData']);
     Route::get('user/search/{name}',[UserController::class,'searchData']);
+    Route::post('user/fileUpload',[UserController::class,'fileUpload']);
 
 // User Route
 Route::post('login',[UserController::class,'login']);

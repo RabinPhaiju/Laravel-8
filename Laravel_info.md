@@ -114,3 +114,24 @@
 - create the seeder for the User model :- php artisan make:seeder UsersTableSeeder
 - seed users table with user :- php artisan db:seed --class=UsersTableSeeder
 - create a controller and login route
+
+# laravel sanctum,jwt,passport
+
+1. Passport : Passport provides a full OAuth2 server implementation for your
+   Laravel application in a matter of minutes. It is therefore necessary to have
+   a brief knowledge of OAuth2.
+
+2. Sanctum : Sanctum it is a simple package to issue API tokens to your users
+   without the complication of OAuth. Sanctum uses Laravel's built-in cookie
+   based session authentication services.
+
+In a small application use Sanctum. it's simple and easy
+
+3. JWT : Auth (Authentication) is the process of identifying the user
+   credentials. In web applications, authentication is managed by sessions which
+   take the input parameters such as email or username and password, for user
+   identification. If these parameters match, the user is said to be authenticated.
+
+# Laravel 8 changes
+
+- https://laravel.com/docs/8.x/releases
