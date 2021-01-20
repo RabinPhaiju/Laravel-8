@@ -135,3 +135,17 @@ In a small application use Sanctum. it's simple and easy
 # Laravel 8 changes
 
 - https://laravel.com/docs/8.x/releases
+
+1. Laravel Jetstream
+2. Models Directory
+3. Model Factory Classes
+4. Migration Squashing
+5. Job Batching
+6. Improved Rate Limiting
+7. Improved Maintenance Mode
+8. Closure Dispatch / Chain
+9. Dynamic Blade Components
+10. Event Listener Improvements
+11. Time Testing Helpers
+12. Tailwind Pagination Views
+13. Routing Namespace Updates
