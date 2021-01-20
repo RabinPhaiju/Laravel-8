@@ -16,7 +16,10 @@
 
 # Create new project
 
-- composer create-project --prefer-dist laravel/laravel [project_name]
+1. install laravel only once, of a device
+   - composer global require laravel/installer
+   - laravel new [project_name]
+2. composer create-project --prefer-dist laravel/laravel [project_name]
 
 # Php artisan
 
@@ -158,3 +161,16 @@ In a small application use Sanctum. it's simple and easy
 - But, we cannot see the website, so for the problem. The solution is Maintenance Mode using secret code.
 - Generate Secret code:- php artisan down --secret="123"
 - Now access the server in :- [website_url]/[secret_key]
+
+# Laravel Jetstream
+
+- Package of laravel, provides basic of a project, like login,registration, api, logout, basic layout system.
+
+1. uninstall and reinstall composer
+   - composer global remove laravel/installer
+   - composer global require laravel/installer
+2. laravel new [project_name] --jet
+3. npm install && npm run dev
+4. php artisan serve
+   - create a new database in phpmyadmin as the name same to the [project_name]
+5. php artisan migrate
