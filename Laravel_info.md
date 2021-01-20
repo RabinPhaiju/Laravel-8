@@ -149,3 +149,12 @@ In a small application use Sanctum. it's simple and easy
 11. Time Testing Helpers
 12. Tailwind Pagination Views
 13. Routing Namespace Updates
+
+# Maintenance Mode
+
+- update some code in the project, we cannot directly push the code. Thats why we put the website in down mode. and push the update and up the server again.
+- Down the serve :- php artisan down
+- Up the serve :- php artisan up
+- But, we cannot see the website, so for the problem. The solution is Maintenance Mode using secret code.
+- Generate Secret code:- php artisan down --secret="123"
+- Now access the server in :- [website_url]/[secret_key]
