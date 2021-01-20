@@ -102,3 +102,15 @@
 - eg :- eg for curd operation, only one route can access all operations.
 - php artisan make:controller [controller_name] --resource
 - create model and controller at once :- php artisan make:model [model_name] --resource
+
+# API Authentication with Sanctum
+
+- install sanctum :- composer require laravel/sanctum
+- Publish the Sanctum configuration and migration files .
+- php artisan vendor:publish - --provider="Laravel\Sanctum\SanctumServiceProvider"
+- Run your database migrations :- php artisan migrate
+- Add the Sanctum's middleware.
+- To use tokens for users.
+- create the seeder for the User model :- php artisan make:seeder UsersTableSeeder
+- seed users table with user :- php artisan db:seed --class=UsersTableSeeder
+- create a controller and login route
