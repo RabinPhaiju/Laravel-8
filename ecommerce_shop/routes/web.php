@@ -25,3 +25,5 @@ Route::post('/login',[UserController::class,'login']);
 
 Route::get('/',[ProductController::class,'index']);
 Route::get('getproduct/{id}',[ProductController::class,'getproduct']);
+Route::post('searchproduct',[ProductController::class,'searchproduct']);
+Route::get('searchproduct',[ProductController::class,'index']);
