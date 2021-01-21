@@ -23,4 +23,4 @@ Route::view('login','login');
 Route::post('/login',[UserController::class,'login']);
 
 
-Route::get('/product',[ProductController::class,'index']);
+Route::get('/',[ProductController::class,'index']);
