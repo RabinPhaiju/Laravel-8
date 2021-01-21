@@ -15,7 +15,7 @@ class ProductController extends Controller
     public function index()
     {
         $product =  Product::all();
-        return view('product',['product'=>$product]);
+        return view('products',['product'=>$product]);
     }
 
     /**
@@ -45,9 +45,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function getproduct($id)
     {
-        //
+        $product = Product::find($id);
+        return view('getproduct',['product'=>$product]);
     }
 
     /**
