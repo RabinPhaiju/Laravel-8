@@ -70,9 +70,13 @@ class RestaurantController extends Controller
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function edit(Restaurant $restaurant)
+    public function updatelist(Request $req)
     {
-        //
+        $resto = Restaurant::find($req->id);
+
+        if($resto){
+            return view('updatelist',['data'=>$resto]);
+        }
     }
 
     /**
@@ -82,9 +86,31 @@ class RestaurantController extends Controller
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Restaurant $restaurant)
+    public function update(Request $req)
     {
-        //
+        $resto = Restaurant::find($req->id);
+
+        if($resto){
+            if($req->name){
+                $resto->name=$req->name;
+            }
+            if($req->email){
+                $resto->email=$req->email;
+            }
+            if($req->address){
+                $resto->address = $req->address;
+            }
+            $result = $resto->save();
+    
+            if($result){
+                session()->flash('update',$req->name);
+            }else{
+                session()->flash('update',$req->name);
+            }
+        }else{
+            session()->flash('update',$req->name);
+        } 
+        return redirect('list');
     }
 
     /**
@@ -93,8 +119,14 @@ class RestaurantController extends Controller
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Restaurant $restaurant)
+    public function delete(Request $req,$id)
     {
-        //
+        $res = Restaurant::find($id);
+        if($res){
+            $res->delete();
+            session()->flash('delete',$res->name);
+        }
+        return redirect('list');
+
     }
 }

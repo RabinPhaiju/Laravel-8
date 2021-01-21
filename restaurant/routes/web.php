@@ -22,3 +22,6 @@ Route::get("/",[RestaurantController::class,"index"]);
 Route::get('/list',[RestaurantController::class,'list']);
 Route::view('addresto','addresto');
 Route::post('addresto',[RestaurantController::class,'add']);
+Route::get('update/{id}',[RestaurantController::class,'updatelist']);
+Route::post('list/update',[RestaurantController::class,'update']);
+Route::get('list/delete/{id}',[RestaurantController::class,'delete']);
