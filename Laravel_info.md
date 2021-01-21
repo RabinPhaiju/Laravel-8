@@ -65,7 +65,7 @@
 - Refresh :- php artisan migrate:refresh
 - Migrate a file: - php artisan migrate --path=/database/migrate/filename
 
-# Seeding
+# Seeding / Faker
 
 - Adding some dummy data to database throught laravel command line.
 - create :- php artisan make:seeder MembersSeeder

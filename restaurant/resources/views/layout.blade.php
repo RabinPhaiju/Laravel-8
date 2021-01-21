@@ -23,6 +23,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="/list">List</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/addresto">Add</a>
+                </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Menu
@@ -49,7 +52,7 @@
             </div>
           </nav>
     </header>
-        <div>
+        <div class="container">
             @yield('content')
         </div>
     

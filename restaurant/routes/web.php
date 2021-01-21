@@ -19,4 +19,6 @@ use App\Http\Controllers\RestaurantController;
 // });
 
 Route::get("/",[RestaurantController::class,"index"]);
-Route::view('/list',"restolist");
+Route::get('/list',[RestaurantController::class,'list']);
+Route::view('addresto','addresto');
+Route::post('addresto',[RestaurantController::class,'add']);

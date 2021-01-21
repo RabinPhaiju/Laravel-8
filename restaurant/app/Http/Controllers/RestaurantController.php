@@ -18,7 +18,8 @@ class RestaurantController extends Controller
     }
 
     public function list(){
-        return view('restolist');
+        $data = Restaurant::all();
+        return view('restolist',['data'=>$data]);
     }
 
     /**
@@ -26,9 +27,19 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function add(Request $req)
     {
-        //
+        $restaurant = new Restaurant;
+
+        $restaurant->name=$req->name;
+        $restaurant->email= $req->email;
+        $restaurant->address = $req->address;
+
+        $restaurant->save();
+        $req->session()->flash('name',$req->name);
+
+        return redirect('list');
+
     }
 
     /**
