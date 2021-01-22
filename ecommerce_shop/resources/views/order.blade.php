@@ -17,16 +17,17 @@
           </tr>
         </tbody>
       </table>
-      <form action="">
+      <form action="/placeOrder" method="POST">
+        @csrf
           <div class="form-group">
-              <textarea name="" id="" cols="68" rows="2">Type your message.</textarea>
+              <textarea name="address" cols="68" rows="2" placeholder="Enter your address."></textarea>
           </div>
           <div class="form-group">
               <label for="pwd" class="bg">Payment Method</label><br>
-              <input type="radio" name="payment"><span> Online Payment</span><br>
-              <input type="radio" name="payment" ><span> Cash on Delivery</span>
+              <input type="radio" value="cash" name="payment"><span> Online Payment</span><br>
+              <input type="radio" value="cash" name="payment" ><span> Cash on Delivery</span>
           </div>
-          <input class="btn btn-success" type="button" value="Order">
+          <input class="btn btn-success" type="submit" value="Order">
       </form>
 </div>
 @endsection
