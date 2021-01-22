@@ -59,5 +59,8 @@
     .search-box{
         width: 400px !important;
     }
+    .cart-list-divider{
+        border-bottom: 1px solid rgba(204, 204, 204, 0.694);
+    }
 </style>
 </html>

@@ -24,11 +24,9 @@ $total_item = ProductController::getCart();
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
       </ul>
-     
-     
-
-        <a class="nav-link" href="#">Orders ({{$total_item}})</a>
-        
+      @if (Session::has('user'))
+        <a class="nav-link" href="/cart">Cart ({{$total_item}})</a>
+        @endif
      @if (Session::has('user'))
       <div class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

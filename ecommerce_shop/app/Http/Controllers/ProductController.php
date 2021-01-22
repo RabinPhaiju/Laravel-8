@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Session;
 
@@ -51,7 +53,14 @@ class ProductController extends Controller
         $cart->user_id=$req->session()->get('user')['id'];
         $cart->product_id=$req->input('product_id');
         $cart->save();
-        return redirect('/');
+        return redirect('/cart');
+    }
+    function removeFromCart(Request $req){
+        $cart = Cart::find($req->product_id);
+        if($cart){
+            $cart->delete();
+        }
+        return redirect('/cart');
     }
 
     static function getCart(){
@@ -62,8 +71,14 @@ class ProductController extends Controller
         return Cart::where('user_id',$user_id)->count();
     }
 
-    function getCartItem(){
-        
+    function cart(){
+        $user_id=Session::get('user')['id'];
+        $products = DB::table('carts')
+        ->join('products','carts.product_id','=','products.id')
+        ->where('carts.user_id',$user_id)
+        ->select('products.*','carts.id as cart_id')
+        ->get();
 
+        return view('cart',['products'=>$products]);
     }
 }
