@@ -6,6 +6,8 @@
 - Installation :
   1.  Create new project :- laravel new [project_name]
   2.  Install livewire :- composer require livewire/livewire
+- publish (optional)
+  - php artisan livewire:publish
 
 # Component
 
