@@ -9,6 +9,7 @@
             <a class="btn btn-success m-2" href="/order">Buy Now</a>
         </div>
     </div>
+    <h4>My Cart</h4>
 @foreach ($products as $product)
     <div class="row m-2 cart-list-divider py-2">
         <div class="col-sm-4">
