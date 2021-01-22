@@ -63,6 +63,15 @@ class ProductController extends Controller
         }
         return redirect('/cart');
     }
+    function removeFromOrder(Request $req){
+        $user_id=Session::get('user')['id'];
+        $order = Order::where('product_id',$req->product_id)->where('user_id',$user_id)->get();
+        if($order){
+          
+            $order->each->delete();
+        }
+        return redirect('/myorder');
+    }
 
     static function getCart(){
         if(!Session::has('user')){
@@ -89,7 +98,9 @@ class ProductController extends Controller
         ->join('products','carts.product_id','=','products.id')
         ->where('carts.user_id',$user_id)
         ->sum('products.price');
-
+        if($total==0){
+            return redirect('/cart');
+        }
         return view('order',['total'=>$total]);
     }
     function placeOrder(Request $req){

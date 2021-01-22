@@ -10,6 +10,11 @@
         </div>
     </div>
     <h4>My Cart</h4>
+    @if (count($products)==0)
+        <p>Cart is empty. Add products to Cart.
+            <a href="/">Shop</a>
+        </p>
+    @endif
 @foreach ($products as $product)
     <div class="row m-2 cart-list-divider py-2">
         <div class="col-sm-4">

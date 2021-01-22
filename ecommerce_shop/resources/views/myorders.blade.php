@@ -2,6 +2,11 @@
 @section('content')
 <div class="container">
     <h4>My Orders</h4>
+    @if (count($products)==0)
+    <p>Order is empty. Add products to cart first.
+        <a href="/">Shop</a>
+    </p>
+@endif
 @foreach ($products as $product)
     <div class="row m-2 cart-list-divider py-2">
        
@@ -18,10 +23,10 @@
         </div>
         <div class="col-sm-2 ">
             <div class="product-buttons">
-                <form action="/removeFromCart" method="POST">
+                <form action="/removeFromOrder" method="POST">
                     @csrf
-                    <input type="hidden" name="product_id" value="">
-                    <button class="btn btn-danger" type="submit">Cancel</button>
+                    <input type="hidden" name="product_id" value={{$product->id}}>
+                    <button class="btn btn-danger" type="submit">Cancel Order</button>
                 </form>
             </div>
                     </div>
