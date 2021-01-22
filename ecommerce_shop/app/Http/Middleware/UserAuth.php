@@ -19,6 +19,9 @@ class UserAuth
         if($req->path()=="login" && $req->session()->has('user')){
             return redirect('/');
         }
+        if($req->path()=="addToCart" && !$req->session()->has('user')){
+            return redirect('/login');
+        }
             return $next($req);
         
     }

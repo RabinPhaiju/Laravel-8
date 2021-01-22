@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Cart;
 use Illuminate\Http\Request;
+use Session;
 
 class ProductController extends Controller
 {
@@ -41,5 +43,24 @@ class ProductController extends Controller
      function destroy(Product $product)
     {
         //
+    }
+
+    function addToCart(Request $req){
+        $cart = new Cart;
+
+        $cart->user_id=$req->session()->get('user')['id'];
+        $cart->product_id=$req->input('product_id');
+        $cart->save();
+        return redirect('/');
+    }
+
+    static function getCart(){
+        $user_id = Session::get('user')['id'];
+        return Cart::where('user_id',$user_id)->count();
+    }
+
+    function getCartItem(){
+        
+
     }
 }

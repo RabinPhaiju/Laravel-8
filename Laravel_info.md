@@ -57,7 +57,7 @@
 
 - Migrations are like version control for your database, allowing your team to define and share the application's database schema definition.
 
-- Create schema :- php artisan make:migration create_test_table
+- Create schema :- php artisan make:migration create_table_name_table
 - Migrate :- php artisan migrate
 - Undo :- php artisan migrate:rollback
 - Undo selected migrate :- php artisan migrate:rollback --step 3

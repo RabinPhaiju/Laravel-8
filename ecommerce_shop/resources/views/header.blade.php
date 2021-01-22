@@ -1,3 +1,8 @@
+<?php
+use App\HTTP\Controllers\ProductController;
+$total_item = ProductController::getCart();
+?>
+
 <div class="px-2 custom-header">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/">Rabs Store</a>
@@ -20,7 +25,7 @@
           </form>
       </ul>
       
-        <a class="nav-link" href="#">Orders (0)</a>
+        <a class="nav-link" href="#">Orders ({{$total_item}})</a>
       
       
     </div>
