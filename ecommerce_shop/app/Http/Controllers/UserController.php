@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Session;
 
 class UserController extends Controller
 {
@@ -16,8 +17,13 @@ class UserController extends Controller
             
         }else{
             session()->flash('loginfail','Username or password worng!');
-            return redirect('login');
+            return view('login');
         }
         return $user;
+    }
+
+    function logout(){
+        Session::forget('user');
+        return redirect('/');
     }
 }
