@@ -23,7 +23,8 @@
                 </div>
                 <div class="form-check">
                   <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Remember this Computer.</label>
+                  <label class="form-check-label" for="exampleCheck1">Remember this Computer. </label>
+                  <label for="signup">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Don't have account<a href="/signup"> Signup!</a></label>
                 </div>
                 <button type="submit" class="btn btn-primary col-sm-3">Login</button>
               </form>

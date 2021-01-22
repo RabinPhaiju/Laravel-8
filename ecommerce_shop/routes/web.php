@@ -37,3 +37,5 @@ Route::get('order',[ProductController::class,'order']);
 Route::post('placeOrder',[ProductController::class,'placeOrder']);
 Route::get('myorder',[ProductController::class,'myorder']);
 Route::view('myorders','myorders');
+Route::view('/signup','signup');
+Route::post('/signup',[UserController::class,'signup']);

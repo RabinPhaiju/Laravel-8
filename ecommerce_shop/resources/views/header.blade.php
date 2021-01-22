@@ -38,6 +38,7 @@ $total_item = ProductController::getCart();
       </div>
     @else
     <a class="nav-link" href="/login">Login</a>
+    <a class="nav-link" href="/signup">Singup</a>
       @endif
     </div>
   </nav>
