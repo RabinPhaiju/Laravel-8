@@ -42,3 +42,5 @@ Route::get('myorder',[ProductController::class,'myorder']);
 Route::view('myorders','myorders');
 Route::view('/signup','signup');
 Route::post('/signup',[UserController::class,'signup']);
+
+Route::get('profile',[UserController::class,'profile']);

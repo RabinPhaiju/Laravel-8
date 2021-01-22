@@ -31,7 +31,7 @@ $total_item = ProductController::getCart();
           {{Session::get('user')['name']}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Profile</a>
+          <a class="dropdown-item" href="/profile">Profile</a>
           <a class="dropdown-item" href="#">Settings</a>
           <a class="dropdown-item" href="/logout">Logout</a>
         </div>
