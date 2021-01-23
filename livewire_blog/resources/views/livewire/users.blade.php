@@ -5,7 +5,8 @@
     <ul>
 
         @foreach ($users as $user)
-        <li><h2>{{$user->name}}</h2></li>
+        <li><p>{{$user->name}}</p></li>
         @endforeach
+        {{ $users->links() }}
     </ul>
   </div>
