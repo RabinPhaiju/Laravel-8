@@ -5,5 +5,7 @@
      <a href="/help">Help</a>
       <a href="/find">Find</a>
      <a href="/uploadFile">Upload File</a>
+     <a href="/multiplefileupload">Multi Upload File</a>
+
    </div>
 </div>
