@@ -1,10 +1,9 @@
 <div>
-   <ul>
-       <li>
-           <i>Welcome {{$name}}</i>
-       </li>
-       <li><a href="/home/rabinphaiju">Home</a></li>
-       <li><a href="/help">Help</a></li>
-       <li><a href="/find">Find</a></li>
-   </ul>
+   <i>Welcome {{$name}}</i>
+   <div class="header_component">
+      <a href="/home/rabinphaiju">Home</a>
+     <a href="/help">Help</a>
+      <a href="/find">Find</a>
+     <a href="/uploadFile">Upload File</a>
+   </div>
 </div>

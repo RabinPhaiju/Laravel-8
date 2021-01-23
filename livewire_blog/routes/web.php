@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Home;
 use App\Http\Livewire\Help;
 use App\Http\Livewire\Find;
+use App\Http\Livewire\UploadFile;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,4 @@ Route::get('/', function () {
 Route::get('/home/{name}',Home::class);
 Route::get('/help/{topic?}',Help::class);
 Route::get('/find',Find::class);
+Route::get('/uploadFile',UploadFile::class);
