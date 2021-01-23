@@ -27,6 +27,8 @@
 # Same category component inside a folder
 
 - It creates both view and controller inside a folder.
-- php artisan make:livewire user.password
+- php artisan make:livewire user.signin
+- php artisan make:livewire user\\login
+- php artisan make:livewire user/profile
   - user is a folder
-  - password is a controller/class
+  - singin,login.,profile are a controller/class
