@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Home;
 use App\Http\Livewire\Help;
+use App\Http\Livewire\Find;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,4 @@ Route::get('/', function () {
 
 Route::get('/home/{name}',Home::class);
 Route::get('/help/{topic?}',Help::class);
+Route::get('/find',Find::class);
