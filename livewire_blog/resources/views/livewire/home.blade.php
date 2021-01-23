@@ -1,3 +1,3 @@
 <div>
-    Home page
+    Home page of {{$name}}
 </div>

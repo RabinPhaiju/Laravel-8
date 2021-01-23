@@ -19,5 +19,5 @@ Route::get('/', function () {
     return view('layout');
 });
 
-Route::get('/home',Home::class);
-Route::get('/help',Help::class);
+Route::get('/home/{name}',Home::class);
+Route::get('/help/{topic?}',Help::class);

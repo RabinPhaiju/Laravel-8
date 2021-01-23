@@ -8,7 +8,7 @@
     @livewireStyles
 </head>
 <body>
-    @livewire('header')
+    @livewire('header',['name'=>'Rabin Phaiju'])
     @livewire('counter')
     @livewire('search')
 </body>

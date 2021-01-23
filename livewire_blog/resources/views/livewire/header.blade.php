@@ -1,6 +1,9 @@
 <div>
    <ul>
-       <li><a href="/home">Home</a></li>
+       <li>
+           <i>Welcome {{$name}}</i>
+       </li>
+       <li><a href="/home/rabinphaiju">Home</a></li>
        <li><a href="/help">Help</a></li>
        <li>Signup</li>
    </ul>
