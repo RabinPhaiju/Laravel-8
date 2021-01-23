@@ -1,5 +1,7 @@
 # Livewire
 
+- https://laravel-livewire.com/docs/2.x/quickstart
+
 - Single page application with out writing java script code.
 - Laravel Livewire is a library that makes it simple to build modern, reactive, dynamic interfaces using Laravel Blade as your templating language. This is a great stack to choose if you want to build an application that is dynamic and reactive but don't feel comfortable jumping into a full JavaScript framework like Vue.js.
 
@@ -32,3 +34,16 @@
 - php artisan make:livewire user/profile
   - user is a folder
   - singin,login.,profile are a controller/class
+
+# Life cycle hook
+
+- mount :- used when component loads to memory
+- hydrate :- after component loads, and when sent a request (click,bind) and called hydrate before render.
+- dehydrate :- after render it is called
+- updating :-(global) while a property is update and then it is excuted
+- updated :- (global)when property is updated, it is excuted
+- update{property} :-
+  - updating{num1}
+  - updated{num2}
+- updatingStudentName :- property inside property student and name
+- updatedStudentName :-
