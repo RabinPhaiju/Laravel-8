@@ -6,6 +6,7 @@ use App\Http\Livewire\Help;
 use App\Http\Livewire\Find;
 use App\Http\Livewire\UploadFile;
 use App\Http\Livewire\Multiplefileupload;
+use App\Http\Livewire\Users;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,5 @@ Route::get('/help/{topic?}',Help::class);
 Route::get('/find',Find::class);
 Route::get('/uploadFile',UploadFile::class);
 Route::get('/multiplefileupload',Multiplefileupload::class);
+
+Route::get('/users',Users::class);

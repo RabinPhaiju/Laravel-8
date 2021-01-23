@@ -6,6 +6,7 @@
       <a href="/find">Find</a>
      <a href="/uploadFile">Upload File</a>
      <a href="/multiplefileupload">Multi Upload File</a>
+     <a href="/users">Users</a>
 
    </div>
 </div>
