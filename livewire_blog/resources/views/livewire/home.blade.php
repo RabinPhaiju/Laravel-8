@@ -1,5 +1,6 @@
 <div>
     Home page of {{$name}}
+    <button wire:click="downloadfile">Download Image</button>
     @livewire('counter')
     <div>
         <form wire:submit.prevent="add">

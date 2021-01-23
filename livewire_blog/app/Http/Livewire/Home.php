@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\Storage;
 
 class Home extends Component
 {
@@ -38,6 +39,9 @@ class Home extends Component
         }else{
             $this->message ='Num1 is equal to num2';
         }
+    }
+    public function downloadfile(){
+        return Storage::disk('local')->download('photos/rabin.jpg');
     }
 
     public function mount($name){
