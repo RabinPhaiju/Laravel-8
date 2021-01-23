@@ -12,9 +12,20 @@ class Home extends Component
     public $result;
     public $message = '';
 
+    protected $rules = [
+        'num1'=>'required | min:2 |max:4',
+        'num2'=>'required | min:2 |max:4',
+    ];
+
+    protected $messages =[ //custrom error message
+        'num1.required'=>'hey :attribute num1 is required',
+        'num2.required'=>'hey :attribute num2 is required',
+    ];
+
     protected $listeners = ['resultcalculated'=>'calculatedResult'];
 
     public function add(){
+        $this->validate();
         $this->result = $this->num1 + $this->num2;
         $this->emit('resultcalculated');
     }
