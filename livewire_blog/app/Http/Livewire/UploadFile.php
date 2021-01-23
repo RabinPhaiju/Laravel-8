@@ -18,7 +18,9 @@ class UploadFile extends Component
     public function upload(){
         $this->validate();
         $this->photo->store('photos');
-
+        session()->flash('message', 'photo successfully posted.');
+        return redirect()->to('/home/rabinphaiju');
+        
     }
 
     public function render()

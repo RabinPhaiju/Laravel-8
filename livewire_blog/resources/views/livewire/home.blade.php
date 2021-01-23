@@ -1,5 +1,13 @@
 <div>
     Home page of {{$name}}
+    @if (session()->has('message'))
+            <div class="alert alert-success">
+                <h1>
+
+                    {{ session('message') }}
+                </h1>
+            </div>
+        @endif
     <button wire:click="downloadfile">Download Image</button>
     @livewire('counter')
     <div>
