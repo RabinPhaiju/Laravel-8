@@ -12,9 +12,23 @@
     </div>
     <div>
         <form wire:submit.prevent="add">
-            <input type="number" name="" wire:model.laxy='num1'>
-            <input type="number" name="" wire:model.laxy='num2'>
-            <button type="submit">Submit</button>
+            <input type="number" name="" wire:model.lazy='num1'>
+            <input type="number" name="" wire:model.lazy='num2'>
+            <div wire:loading.delay>
+                {{-- If you want to avoid flickering because loading is very fast, 
+                    you can add the .delay modifier, 
+                    and it will only show up if loading takes longer than 200ms --}}
+                {{-- while talking with controller --}}
+                {{-- You can add or remove classes from an element during loading states, 
+                    by adding the .class modifier to the wire:loading directive. --}}
+                    {{-- You can also perform the inverse and remove classes by adding the .remove modifier. --}}
+                    <progress max="100" x-bind:value="progress"></progress>
+                <p>Loading...</p>
+            </div>
+            <div wire:loading.remove>
+                {{-- opposite of loading --}}
+            <button type="submit">Submit ()</button>
+            </div>
         </form>
             Result : {{$result}}
             <br>
@@ -22,8 +36,8 @@
     </div>
     <div>
         <form wire:submit.prevent="add">
-            <input type="number" name="" wire:model.laxy='num1'>
-            <input type="number" name="" wire:model.laxy='num2'>
+            <input type="number" name="" wire:model.lazy='num1'>
+            <input type="number" name="" wire:model.lazy='num2'>
             {{-- method 1 to call event --}}
             <button type="submit" wire:click="$emit('resultcalculated')">Submit</button>
         </form>
@@ -33,8 +47,8 @@
     </div>
     <div>
         <form wire:submit.prevent="subtract">
-            <input type="number" name="" wire:model.laxy='num1'>
-            <input type="number" name="" wire:model.laxy='num2'>
+            <input type="number" name="" wire:model.lazy='num1'>
+            <input type="number" name="" wire:model.lazy='num2'>
             <button type="submit">Submit</button>
         </form>
             Result : {{$result}}

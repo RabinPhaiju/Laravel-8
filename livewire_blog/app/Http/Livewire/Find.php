@@ -27,6 +27,7 @@ class Find extends Component
     }
 
     public function add(){
+        sleep(2); // for see the loading meesage.
         $this->result = $this->num1 + $this->num2;
     }
     public function subtract(){
