@@ -9,6 +9,7 @@ use Livewire\WithPagination;
 class Users extends Component
 {
     use WithPagination;
+    public $readyToLoad = false;
     public $search;
     protected $querystring = ['search'];
     public function updatingSearch(){
@@ -16,10 +17,14 @@ class Users extends Component
     }
     // protected $paginationTheme = 'bootstrap';
 
+    public function loadUsers(){
+        $this->readyToLoad = true;
+    }
+
     public function render()
     {
         // $users = User::where('name','like','%'.$this->search.'%')->get();
-        $users = User::where('name','like','%'.$this->search.'%')->paginate(10);
+        $users =$this->readyToLoad? User::where('name','like','%'.$this->search.'%')->paginate(10):[];
         return view('livewire.users',['users'=>$users]);
     }
 }

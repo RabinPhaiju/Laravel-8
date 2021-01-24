@@ -21,15 +21,19 @@
             {{-- while talking with controller --}}
                 <progress max="100" x-bind:value="progress"></progress>
         </div>
+
+        <div wire:init="loadUsers">
         @if (count($users)>0)
             
         @foreach ($users as $user)
         <li><p>{{$user->name}}</p></li>
         @endforeach
+        {{ $users->links() }}
         @else
         <p>No user found</p>
         @endif
-        {{ $users->links() }}
+        
+        </div>
         {{-- pagination needs bootstrap or css --}}
     </ul>
   </div>
