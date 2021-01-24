@@ -55,4 +55,13 @@
             <br>
             {{$message}}
     </div>
+    <div>
+        <p>prefetch</p>
+        <input type="number" name="" wire:model.lazy='num1'>
+        <input type="number" name="" wire:model.lazy='num2'>
+        <button type="submit" wire:click.prefetch="subtract">Submit</button>
+        Result : {{$result}}
+            <br>
+            {{$message}}
+    </div>
 </div>
