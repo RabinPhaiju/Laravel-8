@@ -46,9 +46,10 @@
             {{$message}}
     </div>
     <div>
+        <p>substract</p>
         <form wire:submit.prevent="subtract">
-            <input type="number" name="" wire:model.lazy='num1'>
-            <input type="number" name="" wire:model.lazy='num2'>
+            <input class="border_green" wire:dirty.class.remove="border_green" wire:dirty.class="border_red" type="number" name="" wire:model.lazy='num1'>
+            <input class="border_green" wire:dirty.class.remove="border_green" type="number" name="" wire:model.lazy='num2'>
             <button type="submit">Submit</button>
         </form>
             Result : {{$result}}
