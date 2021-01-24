@@ -59,7 +59,10 @@
         <p>prefetch</p>
         <input type="number" name="" wire:model.lazy='num1'>
         <input type="number" name="" wire:model.lazy='num2'>
-        <button type="submit" wire:click.prefetch="subtract">Submit</button>
+        <div wire:offline>
+            You are now offline.
+        </div>
+        <button type="submit" wire:offline.attr="disabled" wire:click.prefetch="subtract">Submit</button>
         Result : {{$result}}
             <br>
             {{$message}}
