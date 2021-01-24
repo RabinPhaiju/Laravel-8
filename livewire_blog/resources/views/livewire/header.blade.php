@@ -7,6 +7,7 @@
      <a href="/uploadFile">Upload File</a>
      <a href="/multiplefileupload">Multi Upload File</a>
      <a href="/users">Users</a>
+     <a href="/alpine">AlpineJss</a>
 
    </div>
 </div>

@@ -19,4 +19,6 @@
    {{$slot}}
 </body>
 @livewireScripts
+{{-- alpine --}}
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js"></script>
 </html>

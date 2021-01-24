@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Home;
+use App\Http\Livewire\Alpinejss;
 use App\Http\Livewire\Help;
 use App\Http\Livewire\Find;
 use App\Http\Livewire\UploadFile;
@@ -30,3 +31,5 @@ Route::get('/uploadFile',UploadFile::class);
 Route::get('/multiplefileupload',Multiplefileupload::class);
 
 Route::get('/users',Users::class);
+
+Route::get('/alpine',Alpinejss::class);
