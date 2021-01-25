@@ -44,6 +44,7 @@
 # create new model
 
 - php artisan make:model User
+- create migration & model :- php artisan make:model User -m
 
 # Flash Session
 
