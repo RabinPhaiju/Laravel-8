@@ -41,6 +41,15 @@ Route::get('oneToOne',[Members::class,'oneToOne']);
 // One to many
 Route::get('oneToMany',[Members::class,'oneToMany']);
 
+// Many to many
+Route::get('manyToMany',[Members::class,'belongsToMany']);
+
+// hasOneThrough
+Route::get('hasOneThrough',[Members::class,'hasOneThrough']);
+
+// hasManyThrough
+Route::get('hasManyThrough',[Members::class,'hasManyThrough']);
+
 //Joins
 Route::get('/member/joins',[Members::class,'joins']);
 

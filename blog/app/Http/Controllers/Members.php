@@ -157,5 +157,16 @@ class Members extends Controller
     function oneToMany(){
         return Member::find(48)->getBloodtype2;
     }
+
+    function belongsToMany(){
+        return Member::find(48)->getBloodtype3;
+    }
+
+    function hasOneThrough(){
+        return Member::find(48)->getBloodtype4;
+    }
+    function hasManyThrough(){
+        return Member::find(48)->getBloodtype5;
+    }
     
 }

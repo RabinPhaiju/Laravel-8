@@ -16,7 +16,11 @@
     <a href="/loginForm">Login Form</a>
     <a href="/noaccess">No Access</a>
     <a href="/uploadFile">File Upload</a>
-
+    <a href="/oneToOne">One to One</a>
+    <a href="/oneToMany">One to Many</a>
+    <a href="/manyToMany">Many to Many</a>
+    <a href="/hasOneThrough">hasOneThrough</a>
+    <a href="/hasManyThrough">hasManyThrough</a>
 
   </div>
 </div>
