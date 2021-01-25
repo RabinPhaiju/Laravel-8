@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Address;
+use App\Models\Post;
 
 class UserController extends Controller
 {
@@ -40,5 +41,45 @@ class UserController extends Controller
         }
 
         return redirect('oneToOne');
+    }
+
+    // One to Many
+    public function getOneToMany()
+    {
+        $user = User::find(1)->posts;
+
+        if (count($user) > 0) {
+            return view('oneToMany', ['users' => $user]);
+        }
+        return view('oneToMany', ['users' => []]);
+    }
+
+    public function insertOneToMany(Request $req)
+    {
+        $user = User::find(1);
+        $post = new Post(['title' => $req->title, 'body' => $req->body]);
+        $user->posts()->save($post);
+        return redirect('oneToMany');
+    }
+
+    public function updateOneToMany(Request $req)
+    {
+        $user = User::find(1);
+        $post = Post::find($req->id);
+        if ($post) {
+
+            $user->posts()->where('id', $req->id)->update(['title' => $req->title, 'body' => $req->body]);
+        }
+
+        return redirect('oneToMany');
+    }
+
+    public function deleteOneToMany($id)
+    {
+        $user = User::find(1);
+        // $user->posts()->where('user_id', 1)->delete(); // delete all posts related to user_id
+        $user->posts()->where('id', $id)->delete(); // delete post with post_id
+
+        return redirect('oneToMany');
     }
 }

@@ -9,9 +9,8 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <a class="nav-link" href="/oneToOne">oneToOne</a>
-       
+        <a class="nav-link" href="/oneToMany">oneToMany</a>
       </ul>
-    
     </div>
   </nav>
   </div>
