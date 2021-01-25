@@ -10,6 +10,7 @@
       <ul class="navbar-nav mr-auto">
         <a class="nav-link" href="/oneToOne">oneToOne</a>
         <a class="nav-link" href="/oneToMany">oneToMany</a>
+        <a class="nav-link" href="/manyToMany">manyToMany</a>
       </ul>
     </div>
   </nav>

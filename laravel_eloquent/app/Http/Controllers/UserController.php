@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Address;
 use App\Models\Post;
+use App\Models\Role;
 
 class UserController extends Controller
 {
@@ -81,5 +82,48 @@ class UserController extends Controller
         $user->posts()->where('id', $id)->delete(); // delete post with post_id
 
         return redirect('oneToMany');
+    }
+
+    // Many to Many
+    public function getManyToMany()
+    {
+        $user = User::find(1);
+        return view('manyToMany', ['users' => $user->roles]);
+    }
+
+    public function insertManyToMany(Request $req)
+    {
+        $user = User::find(1);
+
+        $role = new Role(['name' => $req->role]);
+
+        $user->roles()->save($role);
+        return redirect('manyToMany');
+    }
+
+    public function updateManyToMany(Request $req)
+    {
+        $user = User::find(1);
+        $roles = Role::find($user->id);
+        if ($user->has('roles')) {
+            foreach ($user->roles as $role) {
+                if ($role->name == $roles->name) {
+                    $role->name = $req->newRole;
+                    $role->save();
+                }
+            }
+        }
+        return redirect('manyToMany');
+    }
+
+    public function deleteManyToMany($id)
+    {
+        $user = User::find(1);
+
+        foreach ($user->roles as $role) {
+            $role->where('id', $id)->delete();
+        }
+
+        return redirect('manyToMany');
     }
 }

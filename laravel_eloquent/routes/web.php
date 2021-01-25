@@ -26,3 +26,8 @@ Route::get('oneToMany', [UserController::class, 'getOneToMany']);
 Route::post('insertOneToMany', [UserController::class, 'insertOneToMany']);
 Route::post('updateOneToMany', [UserController::class, 'updateOneToMany']);
 Route::get('deleteOneToMany/{id}', [UserController::class, 'deleteOneToMany']);
+
+Route::get('manyToMany', [UserController::class, 'getManyToMany']);
+Route::post('insertManyToMany', [UserController::class, 'insertManyToMany']);
+Route::post('updateManyToMany', [UserController::class, 'updateManyToMany']);
+Route::get('deleteManyToMany/{id}', [UserController::class, 'deleteManyToMany']);
