@@ -33,10 +33,12 @@ class ProductController extends Controller
         return view('getproduct',['product'=>$product]);
     }
 
-     function edit(Product $product)
-    {
-        //
-    }
+     function products(){
+        $user=Session::get('user');
+        $products = Product::where('user_id',$user->id)->get();
+        return view('/userProducts',['products'=>$products]);
+     }
+
 
      function update(Request $request, Product $product)
     {

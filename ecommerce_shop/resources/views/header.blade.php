@@ -32,7 +32,9 @@ $total_item = ProductController::getCart();
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="/profile">Profile</a>
-          <a class="dropdown-item" href="#">Settings</a>
+          @if (Session::get('user')['role']=='admin')
+              <a class="dropdown-item" href="/products">Products</a>
+          @endif
           <a class="dropdown-item" href="/logout">Logout</a>
         </div>
       </div>
