@@ -65,7 +65,9 @@ class Members extends Controller
     function dbOperation(){
 
             if(session()->has('username')){
-                $data= DB::table('members')->get();
+                // $data = Member::orderBy('id','desc')->get();
+                $data = Member::latest()->get();
+
                 return view('memberListDB',['data'=>$data]);   
             }else{
                 return redirect('/login');
