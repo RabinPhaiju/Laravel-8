@@ -10,10 +10,10 @@
 @foreach ($products as $product)
     <div class="row m-2 cart-list-divider py-2">
        
-        <div class="col-sm-4">
-<img class="product-image" src={{$product->gallery}} alt={{$product->name}}>
+        <div class="col-sm-6">
+<img class="product-image" width="400px" src="/storage/{{$product->gallery}}" alt={{$product->name}}>
         </div>
-        <div class="col-sm-6 ">
+        <div class="col-sm-4 ">
            
             <h3>{{$product->name}}</h3>
             <h6>Price : Rs. {{$product->price}}</h6>

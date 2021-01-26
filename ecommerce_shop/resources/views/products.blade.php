@@ -11,7 +11,7 @@
           @foreach ($product as $item)
           <div class="carousel-item {{$item['id']==1?'active':''}}">
             <a href="/getproduct/{{$item['id']}}">
-              <img class="d-block w-100 p-2 slider-img" src={{$item->gallery}} alt="Second slide">
+              <img class="d-block w-100 p-2 slider-img" src="/storage/{{$item->gallery}}" alt="Second slide">
               <div class="carousel-caption d-none d-md-block m-4">
                   <h5>{{$item->name}}</h5>
                   <p>{{$item->description}}</p>
@@ -35,7 +35,7 @@
             @foreach ($product as $item)
             <div class="trending-item">
               <a href="/getproduct/{{$item['id']}}">
-          <img class="trending-img" src={{$item->gallery}} alt="Second slide">
+          <img class="trending-img p-2" width="100%" src="/storage/{{$item->gallery}}" alt="Second slide">
           <h5 class="trending-text">{{$item->name}}</h5>
         </a>
             </div>

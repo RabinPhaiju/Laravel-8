@@ -51,7 +51,7 @@ class UserController extends Controller
         }
     }
     function upload(Request $req){
-        $user = $user=Session::get('user');
+        $user =Session::get('user');
         $photo = $user->name.$user->id;
         $name = $req->file('file')->getClientOriginalName();
         $data= $req->file('file')->storeAs('public/profile',$photo.$name);

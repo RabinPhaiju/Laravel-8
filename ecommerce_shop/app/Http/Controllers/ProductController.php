@@ -40,12 +40,28 @@ class ProductController extends Controller
      }
 
 
-     function update(Request $request, Product $product)
+     function addProduct(Request $req)
     {
-        //
+        $user=Session::get('user');
+
+        $photo = $user->id;
+        $name = date("d-m-Y").time().".".$req->file('photo')->getClientOriginalExtension();
+        $data= $req->file('photo')->storeAs('public/products',$photo.$name);
+        if($data){
+            $product = new Product();
+            $product->name = $req->name;
+            $product->price = $req->price;
+            $product->user_id = $user->id;
+            $product->category = $req->category;
+            $product->description = $req->description;
+            $product->gallery = $data;
+            $product->save();
+        }
+        return redirect('/products');
+
     }
 
-     function destroy(Product $product)
+     function updateProduct(Product $product)
     {
         //
     }

@@ -22,6 +22,7 @@ Route::post('/uploadPhoto',[UserController::class,'upload']);
 
 
 Route::get('/products',[ProductController::class,'products']);
+Route::post('/addProduct',[ProductController::class,'addProduct']);
 
 
 Route::get('/',[ProductController::class,'index']);

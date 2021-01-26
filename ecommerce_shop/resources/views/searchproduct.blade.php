@@ -12,7 +12,7 @@
         <div class="search_item">
 
             <a href="/getproduct/{{$product['id']}}">
-                <img class="product-image" src={{$product->gallery}} alt={{$product->name}}>>
+                <img class="product-image" width="400px" src="/storage/{{$product->gallery}}" alt={{$product->name}}>
                 <h2>{{$product->name}}</h2>
             </a>
             <h3>Price : {{$product->price}}</h3>
