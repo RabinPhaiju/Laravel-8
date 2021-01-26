@@ -175,3 +175,7 @@ In a small application use Sanctum. it's simple and easy
 4. php artisan serve
    - create a new database in phpmyadmin as the name same to the [project_name]
 5. php artisan migrate
+
+# link storage to public
+
+- php artisan storage:link

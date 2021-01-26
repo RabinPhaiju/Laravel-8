@@ -11,7 +11,8 @@ class UserController extends Controller
 {
     function profile(){
         $user=Session::get('user');
-        return view('profile',['profile'=>$user]);
+        $cUser = User::find($user->id);
+        return view('profile',['profile'=>$cUser]);
     }
 
     function login(Request $req){
@@ -48,6 +49,19 @@ class UserController extends Controller
                 return view('signup');
             }
         }
+    }
+    function upload(Request $req){
+        $user = $user=Session::get('user');
+        $photo = $user->name.$user->id;
+        $name = $req->file('file')->getClientOriginalName();
+        $data= $req->file('file')->storeAs('public/profile',$photo.$name);
+        if($data){
+            $cUser = User::find($user->id);
+            $cUser->photo=$data;
+            $cUser->save();
+        }
+        return redirect('/profile');
+
     }
 
     function logout(){

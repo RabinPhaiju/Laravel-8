@@ -22,6 +22,7 @@ Route::get('/', function () {
 Route::view('login','login');
 Route::post('/login',[UserController::class,'login']);
 Route::get('/logout',[UserController::class,'logout']);
+Route::post('/uploadPhoto',[UserController::class,'upload']);
 
 
 Route::get('/',[ProductController::class,'index']);

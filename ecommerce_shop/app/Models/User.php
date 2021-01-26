@@ -11,6 +11,10 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    public function setPhotoAttribute($value){
+        $this->attributes['photo'] = str_replace('public/','',$value);
+    }
+
     /**
      * The attributes that are mass assignable.
      *

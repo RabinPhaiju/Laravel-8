@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
             User::insert([
                 'name' => $faker->name,
                 'email' => $faker->email,
+                'photo'=>$faker->imageUrl($width = 640, $height = 480),
                 'password' => Hash::make('pass')
             ]);
         }

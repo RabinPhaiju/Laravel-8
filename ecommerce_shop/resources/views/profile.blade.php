@@ -2,15 +2,23 @@
 @section('content')
 <div class=" col-sm-6 container">
     <div class="container emp-profile">
-        <form method="post">
             <div class="row">
                 <div class="col-md-4">
                     <div class="profile-img">
+                        @if ($profile->photo)
+                        <img id="output" src="/storage/{{$profile->photo}}" alt={{$profile->photo}}>
+                        @else 
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-                        <div class="file btn btn-lg btn-primary">
-                            Change Photo
-                            <input type="file" name="file"/>
-                        </div>
+                        @endif
+                        
+                        <form action="/uploadPhoto" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="file btn btn-sm btn-primary">
+                                    Change Photo
+                                    <input type="file" onchange="loadFile(event)"  accept="image/*" id="file" name="file" placeholder="Upload Photo" required>
+                                </div>
+                                <input type="submit" value="Upload" class="btn btn-success">
+                            </form>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -91,7 +99,7 @@
                                         </div>
                                     </div>
                         </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        {{-- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label>Experience</label>
@@ -138,11 +146,10 @@
                                     <p>Your detail description</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
-            </div>
-        </form>           
+            </div>         
     </div>
 </div>
 @endsection
