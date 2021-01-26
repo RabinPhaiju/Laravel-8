@@ -109,7 +109,13 @@ Route::get('/profile/{lang}', function ($lang) {
 
 Route::view("noaccess", 'noaccess');
 
-// protected page
+// Multiple middleware in single route
+
+// Route::get('/roles_test_page',['middleware'=>['middleware1','middleware2','middleware3'],function(){
+//     return view('roles_route');
+// }]);
+
+// protected page middleware in multiple route with multiple middleware
 Route::group(['middleware' => ['protectedPage']], function () {
 
     // Route::get("user/{user}",[Users::class,'index_func']);

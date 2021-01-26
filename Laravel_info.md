@@ -39,7 +39,7 @@
 
 # create new middleware
 
-- php artisan make:middleware ageCheck
+- php artisan make:middleware [ageCheck]
 
 # create new model
 
