@@ -4,6 +4,7 @@
   <a href="#default" class="logo">{{$title}}</a>
   <div class="header-right">
     <a class="active" href="/">Home</a>
+    <a href="/date">Date</a>
     <a href="/about/rabin">about page</a>
     <a href="/contact">contacts</a>
     <a href="/collection">User HTTP</a>
