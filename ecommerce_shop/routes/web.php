@@ -23,6 +23,8 @@ Route::post('/uploadPhoto',[UserController::class,'upload']);
 
 Route::get('/products',[ProductController::class,'products']);
 Route::post('/addProduct',[ProductController::class,'addProduct']);
+Route::get('/updateProduct/{id}',[ProductController::class,'updateProduct']);
+Route::post('/updateProduct',[ProductController::class,'update']);
 
 
 Route::get('/',[ProductController::class,'index']);

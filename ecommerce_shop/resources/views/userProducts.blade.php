@@ -32,7 +32,7 @@
         </div>
         <div class="col-sm-2 ">
             <div class="product-buttons">
-                <a class="btn btn-warning" href="#">Update</a>
+                <a class="btn btn-warning" href="/updateProduct/{{$product->id}}">Update</a>
             </div>
         </div>
     </div>

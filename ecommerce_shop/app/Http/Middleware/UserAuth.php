@@ -19,10 +19,16 @@ class UserAuth
         if($req->path()=="login" && $req->session()->has('user')){
             return redirect('/');
         }
-        if($req->path()=="signup" && $req->session()->has('user')){
+        else if($req->path()=="signup" && $req->session()->has('user')){
             return redirect('/');
         }
-        if($req->path()=="addToCart" && !$req->session()->has('user')){
+        else if($req->path()=="addToCart" && !$req->session()->has('user')){
+            return redirect('/login');
+        }
+        else if($req->path()=="myorder" && !$req->session()->has('user')){
+            return redirect('/login');
+        }
+        else if($req->path()=="cart" && !$req->session()->has('user')){
             return redirect('/login');
         }
             return $next($req);

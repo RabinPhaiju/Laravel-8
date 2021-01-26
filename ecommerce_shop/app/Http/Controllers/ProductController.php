@@ -35,6 +35,9 @@ class ProductController extends Controller
 
      function products(){
         $user=Session::get('user');
+        if($user->role!='admin'){
+            return redirect('/');
+        }
         $products = Product::where('user_id',$user->id)->get();
         return view('/userProducts',['products'=>$products]);
      }
@@ -61,9 +64,38 @@ class ProductController extends Controller
 
     }
 
-     function updateProduct(Product $product)
+     function updateProduct($id)
+    {   
+        $user=Session::get('user');
+        if($user->role!='admin'){
+            return redirect('/');
+        }
+        $product = Product::find($id);
+        return view('editProduct',['product'=>$product]);
+    }
+
+    function update(Request $req)
     {
-        //
+        $user=Session::get('user');
+        $product = Product::where('user_id',$user->id)->where('id',$req->id)->get()->first();
+
+        if($req->gallery){
+            $photo = $user->id;
+            $name = date("d-m-Y").time().".".$req->file('gallery')->getClientOriginalExtension();
+            $data= $req->file('gallery')->storeAs('public/products',$photo.$name);
+        }else{
+            $data = $product->gallery;
+        }
+
+        $product->name = $req->name;
+        $product->price = $req->price;
+        $product->category = $req->category;
+        $product->description = $req->description;
+        $product->gallery = $data;
+        $product->save();
+        
+        return redirect('/products');
+
     }
 
     function addToCart(Request $req){
