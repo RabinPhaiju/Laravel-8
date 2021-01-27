@@ -11,7 +11,17 @@ class UserController extends Controller
 {
 
     function fileUpload(Request $req){
-        $result = $req->file('file')->store('apiDocs');
+        
+         $result = $req->file('file')->store('apiDocs');
+        
+        if($result){
+            $user_id = $req->user_id;
+            $user= User::find($user_id);
+            
+            $user->photo=$result;
+            $user->save();
+            return ['data'=>$user];
+        }
         return ['data'=>$result];
     }
 
