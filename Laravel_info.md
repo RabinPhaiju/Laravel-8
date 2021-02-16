@@ -14,6 +14,10 @@
 - A dependency manager for PHP
 - check cmd "composer"
 
+# Update composer.json
+
+- composer update
+
 # Create new project
 
 1. install laravel only once, of a device
@@ -179,3 +183,7 @@ In a small application use Sanctum. it's simple and easy
 # link storage to public
 
 - php artisan storage:link
+
+# laravel schedule
+
+- https://laravel.com/docs/8.x/scheduling
