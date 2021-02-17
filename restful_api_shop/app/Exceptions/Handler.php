@@ -3,6 +3,10 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Illuminate\Database\QueryException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -33,8 +37,17 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
-            //
+        $this->renderable(function (NotFoundHttpException $e, $request) {
+            return response()->json('Page not found',404);
+        });
+        $this->renderable(function (MethodNotAllowedHttpException $e, $request) {
+            return response()->json('Method not found',404);
+        });
+        $this->renderable(function (HttpException $e, $request) {
+            return response()->json('Pagess not found',404);
+        });
+        $this->renderable(function (QueryException $e, $request) {
+            return response()->json('Server buzy, Try again later',500);
         });
     }
 }

@@ -66,8 +66,12 @@ class UserController extends ApiController
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
-        return $this->showOne($user);
+        $user = User::find($id);
+        if($user){
+            return $this->showOne($user);
+        }else{
+            return $this->errorResponse('User not found',404);
+        }
     }
 
     // /**
