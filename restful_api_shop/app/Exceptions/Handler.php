@@ -44,7 +44,7 @@ class Handler extends ExceptionHandler
             return response()->json('Method not found',404);
         });
         $this->renderable(function (HttpException $e, $request) {
-            return response()->json('Pagess not found',404);
+            return response()->json('Pages not found',404);
         });
         $this->renderable(function (QueryException $e, $request) {
             return response()->json('Server buzy, Try again later',500);

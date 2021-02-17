@@ -32,8 +32,8 @@ class ProductController extends ApiController
             'name'=> 'required',
             'description'=> 'required',
             'quantity'=>'required',
-            'seller_id'=>'required'
-
+            'seller_id'=>'required',
+            'image' => 'required|image'
         ];
 
         $validator = Validator::make($request->all(),$rules);
