@@ -70,6 +70,11 @@
 - Refresh :- php artisan migrate:refresh
 - Migrate a file: - php artisan migrate --path=/database/migrate/filename
 
+# Factories
+
+- create :- php artisan make:factory PostFactory
+- Migrate :- php artisan migrate
+
 # Seeding / Faker
 
 - Adding some dummy data to database throught laravel command line.
