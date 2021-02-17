@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Seller;
 
 class SellerController extends Controller
 {
@@ -13,7 +14,8 @@ class SellerController extends Controller
      */
     public function index()
     {
-        //
+        $sellers = Seller::has('products')->get();
+        return response()->json(['data'=>$sellers],200);
     }
 
     /**
@@ -45,7 +47,8 @@ class SellerController extends Controller
      */
     public function show($id)
     {
-        //
+        $seller = Seller::has('products')->findOrFail($id)->get();
+        return response()->json(['data'=>$seller],200);
     }
 
     /**
