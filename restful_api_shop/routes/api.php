@@ -8,6 +8,10 @@ use App\Http\Controllers\BuyerProductController;
 use App\Http\Controllers\BuyerSellerController;
 use App\Http\Controllers\BuyerCategoryController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CategoryProductController;
+use App\Http\Controllers\CategorySellerController;
+use App\Http\Controllers\CategoryTransactionController;
+use App\Http\Controllers\CategoryBuyerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\TransactionController;
@@ -38,7 +42,12 @@ Route::apiResource("buyers.products",BuyerProductController::class,['only'=>['in
 Route::apiResource("buyers.categories",BuyerCategoryController::class,['only'=>['index']]);
 // Route::apiResource("category",CategoryController::class,['except'=>['index','show']]);
 
-Route::apiResource("category",CategoryController::class);
+Route::apiResource("categories",CategoryController::class);
+Route::apiResource("categories.products",CategoryProductController::class,['only'=>['index']]);
+Route::apiResource("categories.sellers",CategorySellerController::class,['only'=>['index']]);
+Route::apiResource("categories.transactions",CategoryTransactionController::class,['only'=>['index']]);
+Route::apiResource("categories.buyers",CategoryBuyerController::class,['only'=>['index']]);
+
 Route::apiResource("products",ProductController::class);
 Route::apiResource("transactions",TransactionController::class,['only'=>['index','show']]);
 Route::apiResource("transactions.categories",TransactionCategoryController::class,['only'=>['index']]);

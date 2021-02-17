@@ -28,6 +28,7 @@
 # Php artisan
 
 - php artisan :- to view the list of commands
+- php artisan make:controller CategoryProductController -r -m Category
 
 # Run project
 
