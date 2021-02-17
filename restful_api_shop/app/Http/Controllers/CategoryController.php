@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
+use App\Models\Category;
+use Validator;
 
-class CategoryController extends Controller
+
+class CategoryController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +17,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return $this->showAll($categories);
     }
 
     /**
@@ -34,7 +39,27 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules =[
+            'name'=> 'required',
+            'description'=> 'required'
+        ];
+
+        $validator = Validator::make($request->all(),$rules);
+        if($validator->fails()){
+            return response()->json($validator->errors(),401);
+        }
+            $data = $request->all();
+            $data['name']=$request->name;
+            $data['description']=$request->description;
+
+            $category = Category::create($data);
+        
+            if($category){
+                return $this->showOne($category,201);
+            }else{
+                return ['data'=>'category creation fail.'];
+            }
+        
     }
 
     /**
@@ -45,18 +70,12 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $category = Category::find($id);
+        if($category){
+            return $this->showOne($category);
+        }else{
+            return $this->errorResponse('Category not found',404);
+        }
     }
 
     /**
@@ -68,7 +87,23 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+        if($category){
+        
+        if ($request->has('name')){
+            $category->name = $request->name;
+        }
+        if($request->has('description')){
+            $category->description = $request->description;
+        }
+        if(!$category->isDirty()){
+            return $this->errorResponse('You need to specify a different value to update',422);
+        }
+        $category->save();
+        return $this->showOne($category);
+    }else{
+        return $this->errorResponse('Category not found',404);
+    }
     }
 
     /**
@@ -79,6 +114,12 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        if($category){
+            $category->delete();
+            return $this->showOne($category);
+        }else{
+            return $this->errorResponse('Category not found',404);
+        }
     }
 }

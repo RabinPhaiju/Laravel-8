@@ -27,7 +27,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResource("sellers",SellerController::class,['only'=>['index','show']]);
 Route::apiResource("buyers",BuyerController::class,['only'=>['index','show']]);
 // Route::apiResource("category",CategoryController::class,['except'=>['index','show']]);
-Route::apiResource("category",CategoryController::class,['only'=>['index','show']]);
-Route::apiResource("product",ProductController::class);
-Route::apiResource("transaction",TransactionController::class);
+Route::apiResource("category",CategoryController::class);
+Route::apiResource("products",ProductController::class);
+Route::apiResource("transactions",TransactionController::class);
 Route::apiResource("users",UserController::class);
