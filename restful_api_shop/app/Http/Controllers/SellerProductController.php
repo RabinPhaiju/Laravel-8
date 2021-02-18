@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use Illuminate\Support\Facades\Storage;
 use Validator;
 
 class SellerProductController extends ApiController
@@ -34,7 +35,7 @@ class SellerProductController extends ApiController
             "name"=>"required",
             "description"=>"required",
             "quantity"=>"required|integer|min:1",
-            "image" => "required"
+            "image" => "required|image"
         ];
         $validator = Validator::make($request->all(),$rules);
         if($validator->fails()){
@@ -42,6 +43,7 @@ class SellerProductController extends ApiController
         }
             $data = $request->all();
             $data['seller_id'] = $seller->id;
+            $data['image'] = $request->image->store('');
 
             $product = Product::create($data);
         
@@ -82,8 +84,9 @@ class SellerProductController extends ApiController
             if ($request->has('quantity')){
                 $product->quantity = $request->quantity;
             }
-            if($request->has('image')){
-                $product->image = $request->image;
+            if($request->hasFile('image')){
+                Storage::delete($product->image);
+                $product->image = $request->image->store('');
             }
             if($request->has('status')){
                 $product->status = $request->status;
@@ -113,6 +116,8 @@ class SellerProductController extends ApiController
     {
         if($seller->id == $product->seller_id){
             $product->delete();
+            Storage::delete($product->image);
+
             return $this->showOne($product);
         }else{
             return $this->errorResponse('Cannot delete the product',404);
