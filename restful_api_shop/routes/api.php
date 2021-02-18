@@ -71,4 +71,4 @@ Route::apiResource("transactions.categories",TransactionCategoryController::clas
 Route::apiResource("transactions.sellers",TransactionSellerController::class,['only'=>['index']]);
 
 Route::apiResource("users",UserController::class);
-Route::get('users/verify/{token}',[UserController::class,'verify']);
+Route::get('users/verify/{token}',[UserController::class,'verify'])->name('verify');

@@ -51,6 +51,10 @@
 - php artisan make:model User
 - create migration & model :- php artisan make:model User -m
 
+# create mail
+
+- php artisan make:mail [UserCreated]
+
 # Flash Session
 
 - Delete after refresh. Used in sending mail and get confrimation.
