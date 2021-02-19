@@ -54,6 +54,7 @@
 # create mail
 
 - php artisan make:mail [UserCreated]
+- with markdown
 
 # Flash Session
 
