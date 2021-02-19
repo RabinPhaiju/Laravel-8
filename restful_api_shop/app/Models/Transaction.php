@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Transformers\TransactionTransformer;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Product;
@@ -10,6 +11,7 @@ use App\Models\Buyer;
 class Transaction extends Model
 {
     use HasFactory;
+    public $transformer = TransactionTransformer::class;
     protected $fillable = [
         'quantity',
         'buyer_id',

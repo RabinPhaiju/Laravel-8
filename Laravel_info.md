@@ -56,6 +56,11 @@
 - php artisan make:mail [UserCreated]
 - with markdown
 
+# Make Transformer (optional)
+
+- hides original db structure of the database
+- php artisan make:transformer UserTransformer
+
 # Flash Session
 
 - Delete after refresh. Used in sending mail and get confrimation.
