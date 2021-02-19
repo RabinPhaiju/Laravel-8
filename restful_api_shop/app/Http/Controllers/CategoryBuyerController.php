@@ -24,11 +24,7 @@ class CategoryBuyerController extends ApiController
         ->pluck('buyer')
         ->unique('id')
         ->values();
-        if($products){
-            return $this->showAll($products);
-        }else{
-            return $this->errorResponse('Not found',404);
-        }
-            
+
+        return $this->showAll($products);  
     }
 }
