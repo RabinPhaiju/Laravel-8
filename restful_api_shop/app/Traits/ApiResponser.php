@@ -4,6 +4,7 @@ namespace App\Traits;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Cache;
 use Validator;
 
 trait ApiResponser{
@@ -26,6 +27,8 @@ trait ApiResponser{
         $collection = $this->paginate($collection);
 
         $collection = $this->transformData($collection,$transformer);
+        $collection = $this->cacheResponse($collection);
+
         return $this->successResponse($collection,$code);
     }
     protected function showOne(Model $instance, $code=200){
@@ -83,5 +86,17 @@ trait ApiResponser{
             ]);
             $paginated->appends(request()->all());
             return $paginated;
+    }
+    protected function cacheResponse($collection){
+        $url = request()->url();
+        $queryParams = request()->query();
+        ksort($queryParams);
+        $queryString = http_build_query($queryParams);
+
+        $fullUrl = "{$url}?{$queryString}";
+
+        return Cache::remember($fullUrl,20,function() use ($collection){
+            return $collection;
+        });
     }
 }
