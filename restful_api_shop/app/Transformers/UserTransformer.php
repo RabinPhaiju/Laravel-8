@@ -40,6 +40,12 @@ class UserTransformer extends TransformerAbstract
             'isAdmin' => ($user->admin === 'true'),
             'creationDate'=> $user->created_at,
             'lastChange'=> $user->updated_at,
+            'links'=>[
+                [
+                'rel'=>'self',
+                'href'=>route('users.show',$user->id),
+                ],
+            ]
         ];
     }
     public static function originalAttribute($index){

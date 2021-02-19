@@ -39,6 +39,32 @@ class BuyerTransformer extends TransformerAbstract
             'isVerified'=>(int)$buyer->verified,
             'creationDate'=> $buyer->created_at,
             'lastChange'=> $buyer->updated_at,
+            'links'=>[
+                [
+                'rel'=>'self',
+                'href'=>route('buyers.show',$buyer->id),
+                ],
+                [
+                    'rel'=>'buyers.categories',
+                    'href'=>route('buyers.categories.index',$buyer->id),
+                ],
+                [
+                    'rel'=>'buyers.transactions',
+                    'href'=>route('buyers.transactions.index',$buyer->id),
+                ],
+                [
+                    'rel'=>'buyers.products',
+                    'href'=>route('buyers.products.index',$buyer->id),
+                ],
+                [
+                    'rel'=>'buyers.sellers',
+                    'href'=>route('buyers.sellers.index',$buyer->id),
+                ],
+                [
+                    'rel'=>'buyers',
+                    'href'=>route('users.show',$buyer->id),
+                ],
+            ]
         ];
     }
     public static function originalAttribute($index){
