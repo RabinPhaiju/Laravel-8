@@ -72,3 +72,4 @@ Route::apiResource("transactions.sellers",TransactionSellerController::class,['o
 
 Route::apiResource("users",UserController::class);
 Route::get('users/verify/{token}',[UserController::class,'verify'])->name('verify');
+Route::get('users/{user}/resend',[UserController::class,'resend'])->name('resend');

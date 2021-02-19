@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UserCreated;
 use App\Models\User;
 use Validator;
 
@@ -87,12 +89,19 @@ class UserController extends ApiController
             'password'=>'min:6|confirmed',
             'admin'=> 'in:'. User::ADMIN_USER.','.User::REGULAR_USER,
         ];
+
+        $validator = Validator::make($request->all(),$rules);
+        if($validator->fails()){
+            return response()->json($validator->errors(),401);
+        }
+
+
         if ($request->has('name')){
             $user->name = $request->name;
         }
         if($request->has('email') && $user->email != $request->email){
             $user->verified = User::UNVERIFIED_USER;
-            $user->verfication_token = User::generateVerificationCode();
+            $user->verification_token = User::generateVerificationCode();
             $user->email = $request->email;
         }
         if($request->has('password')){
@@ -135,5 +144,16 @@ class UserController extends ApiController
         $user->save();
 
         return $this->showMessage('The account has been verified succesfully');
+    }
+    public function resend(User $user){
+        if($user->isVerified()){
+            return $this->errorResponse('This user is already verified',409);
+        }else{
+            retry(5,function() use ($user){
+                Mail::to($user)->send(new UserCreated($user));
+            },100);
+            return $this->showMessage('The verification mail is send succesfully');
+        }
+
     }
 }

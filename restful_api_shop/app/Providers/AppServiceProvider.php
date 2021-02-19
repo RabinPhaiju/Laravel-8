@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Product;
 use App\Mail\UserCreated;
+use App\Mail\UserMailChange;
 use App\Models\User;
 
 class AppServiceProvider extends ServiceProvider
@@ -38,7 +39,16 @@ class AppServiceProvider extends ServiceProvider
             };
         });
         User::created(function($user){
-           Mail::to($user)->send(new UserCreated($user));
+            retry(5,function() use ($user){
+                Mail::to($user)->send(new UserCreated($user));
+            },100);
         });
+        User::updated(function($user){
+            if($user->isDirty('email')){
+                retry(5,function() use ($user){
+                Mail::to($user)->send(new UserMailChange($user));
+                },100);
+            }
+         });
     }
 }
