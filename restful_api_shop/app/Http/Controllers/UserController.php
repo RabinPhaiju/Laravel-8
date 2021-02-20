@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\UserCreated;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Validator;
 
@@ -22,18 +24,40 @@ class UserController extends ApiController
         return $this->showAll($users);
     }
 
+    public function me(){
+
+            $user = Auth::user();
+            echo $user;
+            return response()->json(['data'=>$user],200);
+       
+}
+
+    public function login(Request $request){
+
+            if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
+                $user = Auth::user();
+                
+                $response['user']= $user;
+                $response['token'] = $user->createToken('my-app-token')->accessToken;
+                return response()->json(['data'=>$response],200);
+            }else{
+                return response(['error' => 'Unauthenticated.'], 404);
+            }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function signup(Request $request)
     {
         $rules =[
             'name'=> 'required',
             'email'=> 'required|email|unique:users',
-            'password'=>'required|min:6|confirmed'
+            'password'=>'required|min:6',
+            'password_confirmation'=>'required|min:6'
         ];
 
         $validator = Validator::make($request->all(),$rules);
@@ -45,14 +69,11 @@ class UserController extends ApiController
             $data['verified']=User::UNVERIFIED_USER;
             $data['verification_token']= User::generateVerificationCode();
             $data['admin']=User::REGULAR_USER;
-
+            
             $user = User::create($data);
-        
-            if($user){
-                return $this->showOne($user,201);
-            }else{
-                return ['data'=>'user register fail.'];
-            }
+
+            $user['token'] = $user->createToken('my-app-token')->accessToken;
+            return response()->json(['data'=>$user],200);
         }else{
             return ['data'=>'Password error'];
         }

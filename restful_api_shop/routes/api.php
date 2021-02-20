@@ -42,6 +42,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::group(['middleware' => 'auth:api'], function(){
+
 Route::apiResource("sellers",SellerController::class,['only'=>['index','show']]);
 Route::apiResource("sellers.transactions",SellerTransactionController::class,['only'=>['index','show']]);
 Route::apiResource("sellers.categories",SellerCategoryController::class,['only'=>['index','show']]);
@@ -54,13 +56,13 @@ Route::apiResource("buyers.transactions",BuyerTransactionController::class,['onl
 Route::apiResource("buyers.products",BuyerProductController::class,['only'=>['index']]);
 Route::apiResource("buyers.categories",BuyerCategoryController::class,['only'=>['index']]);
 
-Route::apiResource("categories",CategoryController::class);
+Route::apiResource("categories",CategoryController::class,['except'=>['index']]);
 Route::apiResource("categories.products",CategoryProductController::class,['only'=>['index']]);
 Route::apiResource("categories.sellers",CategorySellerController::class,['only'=>['index']]);
 Route::apiResource("categories.transactions",CategoryTransactionController::class,['only'=>['index']]);
 Route::apiResource("categories.buyers",CategoryBuyerController::class,['only'=>['index']]);
 
-Route::apiResource("products",ProductController::class);
+Route::apiResource("products",ProductController::class,['except'=>['index']]);
 Route::apiResource("products.transactions",ProductTransactionController::class,['only'=>['index']]);
 Route::apiResource("products.buyers",ProductBuyerController::class,['only'=>['index']]);
 Route::apiResource("products.buyers.transactions",ProductBuyerTransactionController::class,['only'=>['store']]);
@@ -70,6 +72,16 @@ Route::apiResource("transactions",TransactionController::class,['only'=>['index'
 Route::apiResource("transactions.categories",TransactionCategoryController::class,['only'=>['index']]);
 Route::apiResource("transactions.sellers",TransactionSellerController::class,['only'=>['index']]);
 
-Route::apiResource("users",UserController::class);
+Route::apiResource("users",UserController::class,['except'=>['store']]);
+Route::get('me',[UserController::class,'me']);
+});
+
 Route::get('users/verify/{token}',[UserController::class,'verify'])->name('verify');
 Route::get('users/{user}/resend',[UserController::class,'resend'])->name('resend');
+
+Route::post('login',[UserController::class,'login']);
+Route::post('signup',[UserController::class,'signup']);
+Route::get('products',[ProductController::class,'index']);
+Route::get('categories',[CategoryController::class,'index']);
+
+Route::get('login',[UserController::class,'login'])->name('login');
