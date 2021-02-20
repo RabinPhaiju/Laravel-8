@@ -33,16 +33,16 @@ class ProductTransformer extends TransformerAbstract
     public function transform(Product $product)
     {
         return [
-            'identifier'=>(int)$product->id,
-            'title'=>(string)$product->name,
-            'details'=>(string)$product->description,
-            'stock'=>(int)$product->quantity,
+            'id'=>(int)$product->id,
+            'name'=>(string)$product->name,
+            'description'=>(string)$product->description,
+            'quantity'=>(int)$product->quantity,
             'status'=>(string)$product->status,
-            'picture'=>url("img/{$product->image}"),
-            'seller'=>(int)$product->seller_id,
+            'image'=>url("img/{$product->image}"),
+            'seller_id'=>(int)$product->seller_id,
             
-            'creationDate'=> $product->created_at,
-            'lastChange'=> $product->updated_at,
+            'created_at'=> $product->created_at,
+            'updated_at'=> $product->updated_at,
             'links'=>[
                 [
                 'rel'=>'self',
@@ -69,15 +69,15 @@ class ProductTransformer extends TransformerAbstract
     }
     public static function originalAttribute($index){
         $attributes =  [
-            'identifier'=>'id',
-            'title'=>'name',
-            'details'=>'description',
-            'stock'=>'quantity',
+            'id'=>'id',
+            'name'=>'name',
+            'description'=>'description',
+            'quantity'=>'quantity',
             'status'=>'status',
-            'picture'=> 'image',
-            'seller'=> 'seller_id',
-            'creationDate'=> 'created_at',
-            'lastChange'=> 'updated_at',
+            'image'=> 'image',
+            'seller_id'=> 'seller_id',
+            'created_at'=> 'created_at',
+            'updated_at'=> 'updated_at',
         ];
         return isset($attributes[$index])?$attributes[$index]:null;
     }

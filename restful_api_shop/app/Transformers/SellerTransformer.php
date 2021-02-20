@@ -33,12 +33,12 @@ class SellerTransformer extends TransformerAbstract
     public function transform(Seller $seller)
     {
         return [
-            'identifier'=>(int)$seller->id,
+            'id'=>(int)$seller->id,
             'name'=>(string)$seller->name,
             'email'=>(string)$seller->email,
-            'isVerified'=>(int)$seller->verified,
-            'creationDate'=> $seller->created_at,
-            'lastChange'=> $seller->updated_at,
+            'verified'=>(int)$seller->verified,
+            'created_at'=> $seller->created_at,
+            'updated_at'=> $seller->updated_at,
             'links'=>[
                 [
                 'rel'=>'self',
@@ -69,12 +69,12 @@ class SellerTransformer extends TransformerAbstract
     }
     public static function originalAttribute($index){
         $attributes =  [
-            'identifier'=>'id',
+            'id'=>'id',
             'name'=>'name',
             'email'=>'email',
-            'isVerified'=>'verified',
-            'creationDate'=> 'created_at',
-            'lastChange'=> 'updated_at',
+            'verified'=>'verified',
+            'created_at'=> 'created_at',
+            'updated_at'=> 'updated_at',
         ];
         return isset($attributes[$index])?$attributes[$index]:null;
     }

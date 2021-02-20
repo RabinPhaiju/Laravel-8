@@ -33,13 +33,13 @@ class UserTransformer extends TransformerAbstract
     public function transform(User $user)
     {
         return [
-            'identifier'=>(int)$user->id,
+            'id'=>(int)$user->id,
             'name'=>(string)$user->name,
             'email'=>(string)$user->email,
-            'isVerified'=>(int)$user->verified,
-            'isAdmin' => ($user->admin === 'true'),
-            'creationDate'=> $user->created_at,
-            'lastChange'=> $user->updated_at,
+            'verified'=>(int)$user->verified,
+            'admin' => ($user->admin === 'true'),
+            'created_at'=> $user->created_at,
+            'updated_at'=> $user->updated_at,
             'links'=>[
                 [
                 'rel'=>'self',
@@ -50,13 +50,13 @@ class UserTransformer extends TransformerAbstract
     }
     public static function originalAttribute($index){
         $attributes =  [
-            'identifier'=>'id',
+            'id'=>'id',
             'name'=>'name',
             'email'=>'email',
-            'isVerified'=>'verified',
-            'isAdmin' => 'admin',
-            'creationDate'=> 'created_at',
-            'lastChange'=> 'updated_at',
+            'verified'=>'verified',
+            'admin' => 'admin',
+            'created_at'=> 'created_at',
+            'updated_at'=> 'updated_at',
         ];
         return isset($attributes[$index])?$attributes[$index]:null;
     }

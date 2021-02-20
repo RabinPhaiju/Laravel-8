@@ -33,11 +33,11 @@ class CategoryTransformer extends TransformerAbstract
     public function transform(Category $category)
     {
         return [
-            'identifier'=>(int)$category->id,
-            'title'=>(string)$category->name,
-            'details'=>(string)$category->description,
-            'creationDate'=> $category->created_at,
-            'lastChange'=> $category->updated_at,
+            'id'=>(int)$category->id,
+            'name'=>(string)$category->name,
+            'description'=>(string)$category->description,
+            'created_at'=> $category->created_at,
+            'updated_at'=> $category->updated_at,
 
             'links'=>[
                 [
@@ -66,11 +66,11 @@ class CategoryTransformer extends TransformerAbstract
     }
     public static function originalAttribute($index){
         $attributes =  [
-            'identifier'=>'id',
-            'title'=>'name',
-            'details'=>'description',
-            'creationDate'=> 'created_at',
-            'lastChange'=> 'updated_at',
+            'id'=>'id',
+            'name'=>'name',
+            'description'=>'description',
+            'created_at'=> 'created_at',
+            'updated_at'=> 'updated_at',
         ];
         return isset($attributes[$index])?$attributes[$index]:null;
     }

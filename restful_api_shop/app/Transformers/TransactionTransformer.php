@@ -33,12 +33,12 @@ class TransactionTransformer extends TransformerAbstract
     public function transform(Transaction $transaction)
     {
         return [
-            'identifier'=>(int)$transaction->id,
+            'id'=>(int)$transaction->id,
             'quantity'=>(int)$transaction->quantity,
-            'buyer'=>(int)$transaction->buyer_id,
-            'product'=>(int)$transaction->product_id,
-            'creationDate'=> $transaction->created_at,
-            'lastChange'=> $transaction->updated_at,
+            'buyer_id'=>(int)$transaction->buyer_id,
+            'product_id'=>(int)$transaction->product_id,
+            'created_at'=> $transaction->created_at,
+            'updated_at'=> $transaction->updated_at,
             'links'=>[
                 [
                 'rel'=>'self',
@@ -65,12 +65,12 @@ class TransactionTransformer extends TransformerAbstract
     }
     public static function originalAttribute($index){
         $attributes =  [
-            'identifier'=>'id',
+            'id'=>'id',
             'quantity'=>'quantity',
-            'buyer'=>'buyer_id',
-            'product'=>'product_id',
-            'creationDate'=> 'created_at',
-            'lastChange'=> 'updated_at',
+            'buyer_id'=>'buyer_id',
+            'product_id'=>'product_id',
+            'created_at'=> 'created_at',
+            'updated_at'=> 'updated_at',
         ];
         return isset($attributes[$index])?$attributes[$index]:null;
     }
