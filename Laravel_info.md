@@ -92,6 +92,10 @@
 - create :- php artisan make:seeder MembersSeeder
 - seed :- php artisan db:seed --class=MembersSeeder
 
+# Passport
+
+- php artisan passport:install
+
 # Accessor
 
 - used in data before displaying the data.

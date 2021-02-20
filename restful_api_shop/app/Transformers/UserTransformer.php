@@ -38,6 +38,7 @@ class UserTransformer extends TransformerAbstract
             'email'=>(string)$user->email,
             'verified'=>(int)$user->verified,
             'admin' => ($user->admin === 'true'),
+            'image'=>url("img/{$user->image}"),
             'created_at'=> $user->created_at,
             'updated_at'=> $user->updated_at,
             'links'=>[
@@ -54,6 +55,7 @@ class UserTransformer extends TransformerAbstract
             'name'=>'name',
             'email'=>'email',
             'verified'=>'verified',
+            'image'=>'image',
             'admin' => 'admin',
             'created_at'=> 'created_at',
             'updated_at'=> 'updated_at',

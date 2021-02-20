@@ -42,6 +42,7 @@ Route::middleware('auth:api/*')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('products/{id}',[ProductController::class,'show_product']);
 Route::group(['middleware' => 'auth:api'], function(){
 
 Route::apiResource("sellers",SellerController::class,['only'=>['index','show']]);

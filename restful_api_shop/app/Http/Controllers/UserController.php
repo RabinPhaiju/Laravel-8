@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\UserCreated;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use Validator;
 
@@ -27,7 +28,7 @@ class UserController extends ApiController
     public function me(){
 
             $user = Auth::user();
-            echo $user;
+            
             return response()->json(['data'=>$user],200);
        
 }
@@ -57,7 +58,8 @@ class UserController extends ApiController
             'name'=> 'required',
             'email'=> 'required|email|unique:users',
             'password'=>'required|min:6',
-            'password_confirmation'=>'required|min:6'
+            'password_confirmation'=>'required|min:6',
+            'image'=>'required|image'
         ];
 
         $validator = Validator::make($request->all(),$rules);
@@ -65,6 +67,7 @@ class UserController extends ApiController
             return response()->json($validator->errors(),401);
         }else if($request->password==$request->password_confirmation){
             $data = $request->all();
+            $data['image'] = $request->image->store('');
             $data['password']=bcrypt($request->password);
             $data['verified']=User::UNVERIFIED_USER;
             $data['verification_token']= User::generateVerificationCode();
@@ -75,7 +78,7 @@ class UserController extends ApiController
             $user['token'] = $user->createToken('my-app-token')->accessToken;
             return response()->json(['data'=>$user],200);
         }else{
-            return ['data'=>'Password error'];
+            return ['data'=>'Password dont match'];
         }
     }
 

@@ -46,8 +46,8 @@ class Handler extends ExceptionHandler
         $this->renderable(function (HttpException $e, $request) {
             return response()->json('Pages not found',404);
         });
-        $this->renderable(function (QueryException $e, $request) {
-            return response()->json('Server buzy, Try again later',500);
-        });
+        // $this->renderable(function (QueryException $e, $request) {
+        //     return response()->json('Server buzy, Try again later',500);
+        // });
     }
 }

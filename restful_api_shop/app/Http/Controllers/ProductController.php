@@ -66,6 +66,16 @@ class ProductController extends ApiController
             return $this->errorResponse('Product not found',404);
         }
     }
+    public function show_product($id)
+    {
+        $product = Product::find($id);
+        if($product){
+            return response()->json(['data'=>$product],200);
+            // return $this->showOne($product);
+        }else{
+            return $this->errorResponse('Product not found',404);
+        }
+    }
 
     /**
      * Update the specified resource in storage.
